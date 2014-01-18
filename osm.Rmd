@@ -38,18 +38,23 @@ How we transfer these datasets into a useful form depends on the program you are
 In this tutorial we will explain how to do it in QGIS and R, as well describing the basics of 
 getting it into a [PostGIS](http://postgis.net/) database.
 
-### Using QGIS
+## OSM data in QGIS
 
 A `.osm` file can be downloaded from the openstreetmap.org with the bounding box selected by
 default depending on the current view, or via a manual selection, as shown below.
 
-![Manual selection of bounding box](osmfigs/manual-selection.png)
+```{r Manual selection of bounding box, fig.width=12, fig.height=8, echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("osmfigs/manual-selection.png")
+ grid.raster(img)
+```
 
 To load this file into QGIS, you can simply use the `Add Vector Layer` button on the 
-right of the screen. However this does not seem to generate satisfactory results. 
+left of the screen. However this does not generate satisfactory results. 
 The *recommended* way to import the data is via the the OSM plugin. When this is 
 installed in QGIS 2.0, use the menus `Vector > OpenStreetMap` to import the xml file
-and convert it into a SpatiaLite databese. Then you can import it into the QGIS workspace. 
+and convert it into a SpatiaLite database. Then you can import it into the QGIS workspace. 
 
 ![Import the osm data to SpatiaLite](osmfigs/import-osm.png)
 
@@ -68,6 +73,9 @@ e.g. [those by Anita Grazer](http://anitagraser.com/2012/02/25/light-styles-for-
 Unfortunately these files do not seem to be working with the current version of QGIS so 
 alternative ready-made styles must be created, as suggested by a 
 [stackexchange question](http://gis.stackexchange.com/questions/42645/is-there-up-to-date-osm-sld-file-for-geoserver). 
+
+Once the data is loaded into QGIS, it can be used as with any other spatial data.
+Next, let's see how R can handle OSM data, via the `osmar` package.
 
 ### Using osmar 
 
@@ -97,22 +105,70 @@ points(-1.53492, 53.81934, col="red", lwd = 5)
 This shows that the data has successfully been loaded and saved as an 
 object called `myhouse`. Let's try analysing this object further. 
 In fact, `myhouse` is technically a list, composed of 3 objects:
-nodes, 
+nodes (points), ways (lines) and relations (polygons composed of 
+many lines). Such OSM data is thus provided a class of its own, 
+and each sub-object can be called separately using the `$` symbol:
 
 ```{r}
+names(myhouse)
+class(myhouse)
+summary(myhouse$ways)
+```
 
+Let's use the dataset we have loaded to investigate the cycle 
+paths in the vicinity of my house. First we need to understand the data
+contained in the object. Let's look at the tags and the attributes of the `ways` object:
+
+```{r}
+summary(myhouse$ways$tags) # summary of the tag data
+head(myhouse$ways$attrs, 8) # attributes of first 8 ways - see I'm in there!
+```
+
+From looking at the [OSM tagging system](http://wiki.openstreetmap.org/wiki/Tags), we can deduce that 
+`id` is the element's id,
+`k` refers to the OSM key (the variables for which the element 
+has values) and that `v` is the value assigned for each 
+id - key combination. Because OSM data is not a simple data frame, 
+we cannot use the usual R notation for subsetting. Instead we use the 
+`find` function. Let us take a subset of bicycle paths in the area
+and plot them.
+
+```{r}
+bikePaths <- find(myhouse, way(tags(k == "bicycle" & v == "yes" )) )
+bikePaths <- find_down(myhouse, way(bikePaths))
+bikePaths <- subset(myhouse, ids= bikePaths)
+plot(myhouse)
+plot_ways(bikePaths, add = T, col = "red", lwd = 3)
+```
+
+The above code block is used to identify all ways in which cycling 
+is permitted, "overriding default access", according OSM's excellent 
+[wiki page on bicycle paths](http://wiki.openstreetmap.org/wiki/Bicycle).
+
+According to this source, the correct way to refer to an on-road cycle path 
+is with the `cycleway` tag. However, none of these have been added to the
+roads that have on-road cycle lanes in this example dataset (as of January 2014).
+Perhaps someone will add these soon. 
+
+```{r}
+which(myhouse$ways$tags$k == "cycleway")
+```
+
+There are, by contrast, a large number of ways classified as "residential".
+Let us use the same method to select them and add them to the map.
+
+```{r}
+res <- find(myhouse, way(tags(k == "highway" & v == "residential" )) )
+res <- find_down(myhouse, way(res))
+res <- subset(myhouse, ids= res)
+plot(myhouse)
+plot_ways(res, add = T, col = "green", lwd = 3)
 ```
 
 
+## Handling raw OSM data
 
-
-
-
-## Spatial subsetting
-
-## Attribution selection
-
-## Analysis and visualisation with R
+## Creating a PostGIS database of OSM data
 
 ## Further resources
 

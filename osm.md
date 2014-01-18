@@ -38,18 +38,19 @@ How we transfer these datasets into a useful form depends on the program you are
 In this tutorial we will explain how to do it in QGIS and R, as well describing the basics of 
 getting it into a [PostGIS](http://postgis.net/) database.
 
-### Using QGIS
+## OSM data in QGIS
 
 A `.osm` file can be downloaded from the openstreetmap.org with the bounding box selected by
 default depending on the current view, or via a manual selection, as shown below.
 
-![Manual selection of bounding box](osmfigs/manual-selection.png)
+![plot of chunk Manual selection of bounding box](figure/Manual_selection_of_bounding_box.png) 
+
 
 To load this file into QGIS, you can simply use the `Add Vector Layer` button on the 
-right of the screen. However this does not seem to generate satisfactory results. 
+left of the screen. However this does not generate satisfactory results. 
 The *recommended* way to import the data is via the the OSM plugin. When this is 
 installed in QGIS 2.0, use the menus `Vector > OpenStreetMap` to import the xml file
-and convert it into a SpatiaLite databese. Then you can import it into the QGIS workspace. 
+and convert it into a SpatiaLite database. Then you can import it into the QGIS workspace. 
 
 ![Import the osm data to SpatiaLite](osmfigs/import-osm.png)
 
@@ -69,6 +70,9 @@ Unfortunately these files do not seem to be working with the current version of 
 alternative ready-made styles must be created, as suggested by a 
 [stackexchange question](http://gis.stackexchange.com/questions/42645/is-there-up-to-date-osm-sld-file-for-geoserver). 
 
+Once the data is loaded into QGIS, it can be used as with any other spatial data.
+Next, let's see how R can handle OSM data, via the `osmar` package.
+
 ### Using osmar 
 
 `osmar` is an R package for downloading and interrogating OSM data that accesses 
@@ -87,7 +91,6 @@ library(osmar)  # if the package is not already installed, use install.packages(
 ## Loading required package: XML
 ## Loading required package: RCurl
 ## Loading required package: bitops
-## Loading required package: gtools
 ## Loading required package: geosphere
 ## Loading required package: sp
 ## 
@@ -108,47 +111,172 @@ centrepoint of the map, we can download all the data in the square km surroundin
 src <- osmsource_api()
 bb <- center_bbox(-1.53492, 53.81934, 1000, 1000)
 myhouse <- get_osm(bb, source = src)
-```
-
-```
-## Error: Couldn't resolve host 'api.openstreetmap.org'
-```
-
-```r
 plot(myhouse)
-```
-
-```
-## Error: error in evaluating the argument 'x' in selecting a method for function 'plot': Error: object 'myhouse' not found
-```
-
-```r
 points(-1.53492, 53.81934, col = "red", lwd = 5)
 ```
 
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 
 This shows that the data has successfully been loaded and saved as an 
 object called `myhouse`. Let's try analysing this object further. 
 In fact, `myhouse` is technically a list, composed of 3 objects:
-nodes, 
+nodes (points), ways (lines) and relations (polygons composed of 
+many lines). Such OSM data is thus provided a class of its own, 
+and each sub-object can be called separately using the `$` symbol:
+
+
+```r
+names(myhouse)
+```
+
+```
+## [1] "nodes"     "ways"      "relations"
+```
+
+```r
+class(myhouse)
+```
+
+```
+## [1] "osmar" "list"
+```
+
+```r
+summary(myhouse$ways)
+```
+
+```
+## osmar$ways object
+## 179 ways, 505 tags, 1270 refs 
+## 
+## ..$attrs data.frame: 
+##     id, visible, timestamp, version, changeset, user, uid 
+## ..$tags data.frame: 
+##     id, k, v 
+## ..$refs data.frame: 
+##     id, ref 
+##  
+## Key-Value contingency table:
+##            Key               Value Freq
+## 1      highway         residential   71
+## 2  source:name OS_OpenData_Locator   49
+## 3      highway             service   41
+## 4   created_by                JOSM   25
+## 5       source                Bing   23
+## 6      highway        unclassified   17
+## 7      highway             footway   15
+## 8     building                 yes   11
+## 9          lit                 yes   11
+## 10      source                 npe   10
+```
+
+
+Let's use the dataset we have loaded to investigate the cycle 
+paths in the vicinity of my house. First we need to understand the data
+contained in the object. Let's look at the tags and the attributes of the `ways` object:
+
+
+```r
+summary(myhouse$ways$tags)  # summary of the tag data
+```
+
+```
+##        id                     k                         v      
+##  Min.   :5.09e+06   highway    :155   residential        : 71  
+##  1st Qu.:7.73e+06   name       :128   OS_OpenData_Locator: 49  
+##  Median :8.46e+07   source     : 56   service            : 41  
+##  Mean   :8.71e+07   source:name: 54   yes                : 32  
+##  3rd Qu.:1.50e+08   created_by : 25   JOSM               : 25  
+##  Max.   :2.45e+08   building   : 12   Bing               : 23  
+##                     (Other)    : 75   (Other)            :264
+```
+
+```r
+head(myhouse$ways$attrs, 8)  # attributes of first 8 ways - see I'm in there!
+```
+
+```
+##         id visible           timestamp version changeset            user
+## 1  5088536    true 2013-02-22 22:08:24      13  15128484 CompactDstrxion
+## 2 22818969    true 2012-09-08 23:06:53      20  13039300    LeedsTracker
+## 3  6273628    true 2007-09-21 17:25:37       1    483846          SteveC
+## 4  6273619    true 2012-12-01 17:57:45       2  14114856            sc71
+## 5  6273721    true 2007-09-16 17:23:14       1    444107            noii
+## 6  6273722    true 2007-09-16 17:23:16       1    444107            noii
+## 7  6273726    true 2007-09-16 17:23:20       1    444107            noii
+## 8  6273736    true 2013-11-02 10:56:24       5  18672988   RobinLovelace
+##      uid
+## 1 464727
+## 2   2330
+## 3    682
+## 4 106831
+## 5  13550
+## 6  13550
+## 7  13550
+## 8 231314
+```
+
+
+From looking at the [OSM tagging system](http://wiki.openstreetmap.org/wiki/Tags), we can deduce that 
+`id` is the element's id,
+`k` refers to the OSM key (the variables for which the element 
+has values) and that `v` is the value assigned for each 
+id - key combination. Because OSM data is not a simple data frame, 
+we cannot use the usual R notation for subsetting. Instead we use the 
+`find` function. Let us take a subset of bicycle paths in the area
+and plot them.
+
+
+```r
+bikePaths <- find(myhouse, way(tags(k == "bicycle" & v == "yes")))
+bikePaths <- find_down(myhouse, way(bikePaths))
+bikePaths <- subset(myhouse, ids = bikePaths)
+plot(myhouse)
+plot_ways(bikePaths, add = T, col = "red", lwd = 3)
+```
+
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+
+
+The above code block is used to identify all ways in which cycling 
+is permitted, "overriding default access", according OSM's excellent 
+[wiki page on bicycle paths](http://wiki.openstreetmap.org/wiki/Bicycle).
+
+According to this source, the correct way to refer to an on-road cycle path 
+is with the `cycleway` tag. However, none of these have been added to the
+roads that have on-road cycle lanes in this example dataset (as of January 2014).
+Perhaps someone will add these soon. 
+
+
+```r
+which(myhouse$ways$tags$k == "cycleway")
+```
+
+```
+## integer(0)
+```
+
+
+There are, by contrast, a large number of ways classified as "residential".
+Let us use the same method to select them and add them to the map.
+
+
+```r
+res <- find(myhouse, way(tags(k == "highway" & v == "residential")))
+res <- find_down(myhouse, way(res))
+res <- subset(myhouse, ids = res)
+plot(myhouse)
+plot_ways(res, add = T, col = "green", lwd = 3)
+```
+
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
 
 
 
+## Handling raw OSM data
 
-
-
-
-
-
-## Spatial subsetting
-
-## Attribution selection
-
-## Analysis and visualisation with R
+## Creating a PostGIS database of OSM data
 
 ## Further resources
 
