@@ -1,10 +1,16 @@
-Open Street Map: loading, analysing and visualising the Wikipedia of maps with R and other free tools
+Open Street Map: loading, analysing and visualising free maps with R and QGIS
 ========================================================
 
 This tutorial shows how open source tools can be used to 
 harness a huge and rapidly growing open source geodatabase: Open Street Map.
+It is targeted at people new to Open Street Map, but who 
+already have an understanding of basic GIS concepts.
+Previous experience with the programs QGIS and R would be beneficial, 
+but not essential, for completing the excercises. There are 
+also a number of resources available on-line for more advanced functions, 
+as described below.
 
-## Introduction
+# Introduction
 
 Open Street Map (OSM) is a crowd-sourced map of the world, 
 the archetype of 'volunteered geographical information'
@@ -18,9 +24,12 @@ of the Earth's surface and the
 explosion in GPS ownership via smartphones has enabled citizens 
 to become accurate sensors of the world, 
 with the added advantage that they are likely to know their local 
-areas far better than any cartographer.
+areas far better than any cartographer. 
 
-Of course there are teething issues with any large-scale open source database, including variable data quality, 
+## Why (and why not) use OSM data?
+
+Of course there are teething issues with any large-scale open source 
+database, including variable data quality, 
 patchy and incomplete coverage and inconsistencies from place to place (Haklay 2010). Yet all of these
 issues are gradually being out. The advantages of Open Street Map outweight these downsides for
 many applications *already*. These include:
@@ -40,22 +49,28 @@ the rapid response of the OSM community to the Typhoon Haiyan disaster. In a mat
 army of volunteers had helped to map out the affected zone, aiding relief efforts (e.g. see
 [MapBox's blog posts on the subject](https://www.mapbox.com/blog/typhoon-haiyan-openstreetmap/)).
 
+## An overview of the tutorial
+
+All of the code and data used to create this tutorial is available 
+on [GitHub](http://github.com). Feel free to download the project as a `.zip` file from the 
+[project's repository](https://github.com/Robinlovelace/osm-tutorial) and, 
+if you would like to modify or improve it 
+in any way, please fork a version for you own use, crediting the original where appropriate.
+
 In this tutorial we focus simply on the technical challenge of extracting the 
 data from servers 'in the cloud' and onto your desktop. We also cover some basic 
-tasks in handling, subsetting and visualising the data.
-There is already some good on-line material about OSM data, including:
+tasks in handling, subsetting and visualising the data, first in the 
+graphical user interface (GUI) of QGIS, and then in the command line with R.
+The next stage talks about editing raw OSM data, essential if you 
+would like to take subsets of very large OSM datasets, such as `planet.osm` 
+which takes up more than 30 GB of memory. The next stage is 
+to talk about OSM data in PostGIS, a geodatabase program ideal 
+for querying very large spatial datasets. Finally, there is a brief 
+section on further resources. None of the sections require any of the 
+previous ones although the level of difficulty generally increases 
+as you progress. 
 
-- a [paper](http://www.mdpi.com/1999-5903/5/2/282/pdf) comparing the quality and 
-coverage of OSM map data in different parts of the world
-- an [overview](http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf)
-of handling OSM data in ArcMap
-- a [tutorial](http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1) illustrating 
-its potential use for GIS education and store location planning
-
-This tutorial is focussed on loading the data in two free and open source programs, 
-QGIS and R. 
-
-## Getting the data
+# Getting the data
 
 OSM data of a specific area
 can be downloaded directly from the [main map page](http://www.openstreetmap.org), from the 
@@ -71,7 +86,7 @@ How we transfer these datasets into a useful form depends on the program you are
 In this tutorial we will explain how to do it in QGIS and R, as well describing the basics of 
 getting it into a [PostGIS](http://postgis.net/) database.
 
-## OSM data in QGIS
+# OSM data in QGIS
 
 A `.osm` file can be downloaded from the openstreetmap.org with the bounding box selected by
 default depending on the current view, or via a manual selection, as shown below.
@@ -110,7 +125,7 @@ alternative ready-made styles must be created, as suggested by a
 Once the data is loaded into QGIS, it can be used as with any other spatial data.
 Next, let's see how R can handle OSM data, via the `osmar` package.
 
-### Using osmar 
+# Using osmar 
 
 `osmar` is an R package for downloading and interrogating OSM data that accesses 
 the data directly from the internet via the R command line.
@@ -124,28 +139,28 @@ library(osmar) # if the package is not already installed, use install.packages("
 ```
 
 To download data directly, one first sets the source and a bounding box, 
-and then use the `get_osm` function to download it. Selecting my house as the 
+and then use the `get_osm` function to download it. Selecting Chapeltown as the 
 centrepoint of the map, we can download all the data in the square km surrounding it.
 
 ```{r}
 src <- osmsource_api()
 bb <- center_bbox(-1.53492, 53.81934, 1000, 1000)
-myhouse <- get_osm(bb, source = src)
-plot(myhouse)
+ctown <- get_osm(bb, source = src)
+plot(ctown)
 points(-1.53492, 53.81934, col="red", lwd = 5)
 ```
 
 This shows that the data has successfully been loaded and saved as an 
-object called `myhouse`. Let's try analysing this object further. 
-In fact, `myhouse` is technically a list, composed of 3 objects:
+object called `ctown`. Let's try analysing this object further. 
+In fact, `ctown` is technically a list, composed of 3 objects:
 nodes (points), ways (lines) and relations (polygons composed of 
 many lines). Such OSM data is thus provided a class of its own, 
 and each sub-object can be called separately using the `$` symbol:
 
 ```{r}
-names(myhouse)
-class(myhouse)
-summary(myhouse$ways)
+names(ctown)
+class(ctown)
+summary(ctown$ways)
 ```
 
 Let's use the dataset we have loaded to investigate the cycle 
@@ -153,8 +168,8 @@ paths in the vicinity of my house. First we need to understand the data
 contained in the object. Let's look at the tags and the attributes of the `ways` object:
 
 ```{r}
-summary(myhouse$ways$tags) # summary of the tag data
-head(myhouse$ways$attrs, 8) # attributes of first 8 ways - see I'm in there!
+summary(ctown$ways$tags) # summary of the tag data
+head(ctown$ways$attrs, 8) # attributes of first 8 ways - see I'm in there!
 ```
 
 From looking at the [OSM tagging system](http://wiki.openstreetmap.org/wiki/Tags), we can deduce that 
@@ -167,10 +182,10 @@ we cannot use the usual R notation for subsetting. Instead we use the
 and plot them.
 
 ```{r}
-bikePaths <- find(myhouse, way(tags(k == "bicycle" & v == "yes" )) )
-bikePaths <- find_down(myhouse, way(bikePaths))
-bikePaths <- subset(myhouse, ids= bikePaths)
-plot(myhouse)
+bikePaths <- find(ctown, way(tags(k == "bicycle" & v == "yes" )) )
+bikePaths <- find_down(ctown, way(bikePaths))
+bikePaths <- subset(ctown, ids= bikePaths)
+plot(ctown)
 plot_ways(bikePaths, add = T, col = "red", lwd = 3)
 ```
 
@@ -184,24 +199,149 @@ roads that have on-road cycle lanes in this example dataset (as of January 2014)
 Perhaps someone will add these soon. 
 
 ```{r}
-which(myhouse$ways$tags$k == "cycleway")
+which(ctown$ways$tags$k == "cycleway")
 ```
 
 There are, by contrast, a large number of ways classified as "residential".
 Let us use the same method to select them and add them to the map.
 
 ```{r}
-res <- find(myhouse, way(tags(k == "highway" & v == "residential" )) )
-res <- find_down(myhouse, way(res))
-res <- subset(myhouse, ids= res)
-plot(myhouse)
+res <- find(ctown, way(tags(k == "highway" & v == "residential" )) )
+res <- find_down(ctown, way(res))
+res <- subset(ctown, ids= res)
+plot(ctown)
 plot_ways(res, add = T, col = "green", lwd = 3)
 ```
 
+# Handling raw OSM data
 
-## Handling raw OSM data
+Although this section will be of most use for dealing with 
+very large files, a small example is used here to showcase the methods
+The file `map.osm` downloaded directly from [openstreetmap.org](http://www.openstreetmap.org)
+is small, allowing available on-line, from 
+[here](https://github.com/Robinlovelace/osm-tutorial/blob/master/data/map.osm?raw=true) 
+(highlighting the advantages 
+of open data for educational purposes - there are few license restrictions).
 
-## Creating a PostGIS database of OSM data
+The Java command line tool [Osmosis](http://wiki.openstreetmap.org/wiki/Osmosis)
+is used for this purpose.
 
-## Further resources
+To show how Osmosis can subset raw OSM files, let us take a real world example from 
+the dataset we imported with the `osmar` package. Imagine that we want to extract all 
+osm data (nodes, ways and relations) from the area in and around Potternewton Park.
+We could do this manually by looking up the park on-line and selecting the associated
+elements in QGIS. But imagine we want to do it from the 
+command line (e.g. for batch processing).
+First we need a bounding box of all items containing the 
+text string "Potternewton Park". For this we use `osmar`:
+
+```{r, echo=FALSE}
+potter <- find(ctown, way(tags(grepl("Potternewton Park", ctown$ways$tags$v))))
+potter <- find_down(ctown, way(potter))
+potter <- subset(ctown, ids = potter)
+plot_ways(potter) # sanity check
+potter.l <- as_sp(potter, "lines") # convert data to sp class
+b <- bbox(potter.l) # save the bounding box
+b[1, ] <- (b[1, ] - mean(b[1, ])) * 1.05 + mean(b[1, ])
+b[2, ] <- (b[2, ] - mean(b[2, ])) * 1.05 + mean(b[2, ])
+# scale longitude and latitude (increase bb by 5% for plot) replace 1.05
+# with 1.xx for an xx% increase in the plot size
+b
+```
+
+Now that we know the bounding box, we can transfer to using osmosis from 
+the command line. If the shell is open in the correct working directory
+(e.g. "osm-tutorial-master", if downloaded from GitHub), the following 
+code will subset the data and output a new, smaller `.osm` file.
+
+```
+osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815 bottom=53.817486 right=-1.521155 --write-xml potter.osm
+
+```
+
+To check whether or not this has worked, and demonstrate `osmar`'s ability to read in 
+`.osm` files, let us try to load an plot the dataset just exported by osmosis.
+
+```{r}
+src <- osmsource_osmosis(file="data/potter.osm")
+bp <- center_bbox(mean(b[1, ]), mean(b[2, ]), 1000, 1000)
+potter <- get_osm(bp, src)
+plot(potter)
+```
+
+Local knowledge or a quick look on an online will confirm that this is 
+indeed Potternewton Park, with is rectangular tennis courts, play area 
+and skate park just west of its centre. The file `potter.osm` can 
+equally be loaded into QGIS or any other GIS. The point is to illustrate
+how Osmosis works. 
+
+For further functionality, including clipping to polygons, extracting files from 
+enormous and compressed `planet.osm.bz2` files and ways to extract only elements with 
+certain attributes, please refer to the 
+[osmosis page of the osm wiki](http://wiki.openstreetmap.org/wiki/Osmosis). 
+The final section discusses (but does not implement)
+the most advanced method of harnessing OSM data, via a PostGIS database. 
+
+# Creating a PostGIS database of OSM data
+
+There are a number of advantages of storing large datasets 
+in a database:
+
+- The data can be accessed by a variety of 3rd party programs
+- Spatial queries can be made by a variety of clients accessing the db, widening the funcionallity
+- Huge datasets can be stored in a database, as it sits on the hard disk, only being 
+transfered to RAM when a specific query is called
+
+Because of the size and complexity of the planet-wide OSM database, it must 
+be stored in an spatial database to be used. For this use the command line tool 
+[osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql). The basics of installation 
+and usage can be found online. 
+
+Using a spatial database, it does not take a very large leap to realise that 
+organisations can create a customised version of the OSM database for their own purposes.
+For example, an organisation interested in store location analysis could keep maintained 
+a version of OSM with everything with elements labelled as shops removed. Alternatively, 
+an organisation interested in woodlands could maintain an up-to-date version 
+of OSM woodlands. Both organisations could supplement these custom databases with their
+own data, combining the best of crowd-sourced and centralised data collection methods.
+
+The [OSM-GB](http://wiki.openstreetmap.org/wiki/Osm2pgsql) project, hosted at the University
+of Nottingham does precisely this, with the aim of quality-checking community contributed data.
+Here is not the place to describe how to set-up a PostGIS database with OSM data, but is well 
+worth flagging as it has great potential, especially when combined with rapidly 
+evolving open source web mapping technologies such as 
+[GeoServer](http://geoserver.org/display/GEOS/Welcome)
+(part of the 
+[GeoNode](http://geonode.org/) stack), [Leaflet](http://leafletjs.com/) and 
+[GeoDjango](https://www.djangoproject.com/). 
+
+With the certainty of peak oil and possibility of 
+effective climate change regulations, trasport will become increasing 
+expensive in future years. Thus, the tendency towards geographical 
+homogenisation of economic activity may go into reverse (Ruben 2009; Greer 2009; 
+Friedrichs 2009). This is bad news for many, but it is good news for people with 
+a strong interest in regional diversity, local economies and geographic diversity. 
+It is also potentially good news for geographers advocating for location-specific 
+solutions. With increased concern over the 
+highly centralised power structures of the internet following the 
+revelations leaked by Edward Snowdon about massive online spying 
+and infringement of digital privacy, there 
+is a huge potential for community-based, problem-specific solutions.
+It is with this wider context in mind that this tutorial ends.
+Happy mapping!
+
+# Further on-line resources
+
+There is already some good on-line material about OSM data, including:
+
+- a [paper](http://www.mdpi.com/1999-5903/5/2/282/pdf) comparing the quality and 
+coverage of OSM map data in different parts of the world
+- an [overview](http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf)
+of handling OSM data in ArcMap
+- a [tutorial](http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1) illustrating 
+its potential use for GIS education and store location planning
+
+# References 
+
+
 

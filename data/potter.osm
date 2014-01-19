@@ -1,0 +1,756 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis 0.40.1">
+  <node id="245494184" version="1" timestamp="2008-02-04T00:53:02Z" uid="16809" user="Geoff Richards" changeset="29830" lat="53.8197966" lon="-1.5265963">
+    <tag k="created_by" v="JOSM"/>
+  </node>
+  <node id="245494270" version="2" timestamp="2010-04-30T22:01:33Z" uid="2330" user="LeedsTracker" changeset="4570451" lat="53.8211005" lon="-1.5284473"/>
+  <node id="248497504" version="5" timestamp="2012-01-21T21:44:26Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8215901" lon="-1.5235696"/>
+  <node id="248497507" version="4" timestamp="2012-01-21T21:44:26Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8206807" lon="-1.5215551"/>
+  <node id="245494191" version="4" timestamp="2010-04-30T22:01:35Z" uid="2330" user="LeedsTracker" changeset="4570451" lat="53.8213424" lon="-1.5229157"/>
+  <node id="245494204" version="2" timestamp="2010-04-09T12:05:15Z" uid="45820" user="Paper" changeset="4372610" lat="53.8198598" lon="-1.5219414"/>
+  <node id="245494271" version="2" timestamp="2010-04-30T22:01:35Z" uid="2330" user="LeedsTracker" changeset="4570451" lat="53.8206694" lon="-1.5285996"/>
+  <node id="245494180" version="2" timestamp="2010-08-30T12:14:20Z" uid="3114" user="chippy" changeset="5635628" lat="53.8177882" lon="-1.5238259"/>
+  <node id="245494181" version="3" timestamp="2010-08-30T12:14:20Z" uid="3114" user="chippy" changeset="5635628" lat="53.8205244" lon="-1.5213369"/>
+  <node id="245494182" version="2" timestamp="2010-08-30T12:14:20Z" uid="3114" user="chippy" changeset="5635628" lat="53.821373" lon="-1.5232359"/>
+  <node id="245494185" version="2" timestamp="2010-08-30T12:14:20Z" uid="3114" user="chippy" changeset="5635628" lat="53.8177059" lon="-1.5286325"/>
+  <node id="245494186" version="2" timestamp="2010-08-30T12:14:20Z" uid="3114" user="chippy" changeset="5635628" lat="53.8177376" lon="-1.5256069"/>
+  <node id="245494183" version="3" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8219836" lon="-1.5254011"/>
+  <node id="245494199" version="2" timestamp="2010-08-30T12:14:10Z" uid="3114" user="chippy" changeset="5635628" lat="53.8176235" lon="-1.5274845"/>
+  <node id="245494201" version="3" timestamp="2010-08-30T12:14:11Z" uid="3114" user="chippy" changeset="5635628" lat="53.8176806" lon="-1.5237508"/>
+  <node id="245494205" version="3" timestamp="2010-10-25T12:23:49Z" uid="354641" user="benholme" changeset="6171522" lat="53.8177375" lon="-1.5223025"/>
+  <node id="248497500" version="3" timestamp="2010-11-08T16:02:18Z" uid="354641" user="benholme" changeset="6321708" lat="53.8220441" lon="-1.5253521"/>
+  <node id="248497502" version="4" timestamp="2010-11-08T16:02:18Z" uid="354641" user="benholme" changeset="6321708" lat="53.8219427" lon="-1.5247727"/>
+  <node id="249806201" version="3" timestamp="2012-09-08T23:07:26Z" uid="2330" user="LeedsTracker" changeset="13039300" lat="53.8175088" lon="-1.5261894"/>
+  <node id="496722044" version="2" timestamp="2009-09-15T05:40:33Z" uid="104459" user="NaPTAN" changeset="2488288" lat="53.8217993" lon="-1.524298">
+    <tag k="highway" v="bus_stop"/>
+    <tag k="local_ref" v="45014502"/>
+    <tag k="name" v="Harehills Lane Roxholme Avenue"/>
+    <tag k="naptan:AtcoCode" v="450014502"/>
+    <tag k="naptan:Bearing" v="NW"/>
+    <tag k="naptan:CommonName" v="Harehills Lane Roxholme Avenue"/>
+    <tag k="naptan:Crossing" v="Roxholme Avenue"/>
+    <tag k="naptan:Indicator" v="Stop 45014502"/>
+    <tag k="naptan:PlusbusZoneRef" v="LEEDS"/>
+    <tag k="naptan:ShortCommonName" v="Roxholme Avenue"/>
+    <tag k="naptan:Street" v="Harehills Lane"/>
+    <tag k="naptan:verified" v="no"/>
+    <tag k="source" v="naptan_import"/>
+  </node>
+  <node id="496722045" version="3" timestamp="2012-01-21T21:44:24Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8216617" lon="-1.5236008">
+    <tag k="highway" v="bus_stop"/>
+    <tag k="local_ref" v="45014503"/>
+    <tag k="name" v="Harehills Lane Roxholme Avenue"/>
+    <tag k="naptan:AtcoCode" v="450014503"/>
+    <tag k="naptan:Bearing" v="SE"/>
+    <tag k="naptan:CommonName" v="Harehills Lane Roxholme Avenue"/>
+    <tag k="naptan:Crossing" v="Roxholme Avenue"/>
+    <tag k="naptan:Indicator" v="Stop 45014503"/>
+    <tag k="naptan:PlusbusZoneRef" v="LEEDS"/>
+    <tag k="naptan:ShortCommonName" v="Roxholme Avenue"/>
+    <tag k="naptan:Street" v="Harehills Lane"/>
+    <tag k="naptan:verified" v="no"/>
+    <tag k="source" v="naptan_import"/>
+    <tag k="towards" v="Halton Moor"/>
+  </node>
+  <node id="714160789" version="1" timestamp="2010-04-30T22:01:33Z" uid="2330" user="LeedsTracker" changeset="4570451" lat="53.8210005" lon="-1.5220854"/>
+  <node id="714160796" version="1" timestamp="2010-04-30T22:01:33Z" uid="2330" user="LeedsTracker" changeset="4570451" lat="53.8215928" lon="-1.5284285"/>
+  <node id="888550251" version="2" timestamp="2012-01-21T21:44:28Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8205922" lon="-1.5211906"/>
+  <node id="888550252" version="1" timestamp="2010-08-30T12:14:16Z" uid="3114" user="chippy" changeset="5635628" lat="53.819604" lon="-1.5219959"/>
+  <node id="888550253" version="1" timestamp="2010-08-30T12:14:16Z" uid="3114" user="chippy" changeset="5635628" lat="53.8184849" lon="-1.5230535"/>
+  <node id="888550254" version="1" timestamp="2010-08-30T12:14:16Z" uid="3114" user="chippy" changeset="5635628" lat="53.8183931" lon="-1.5231289"/>
+  <node id="888550266" version="1" timestamp="2010-08-30T12:14:17Z" uid="3114" user="chippy" changeset="5635628" lat="53.8184898" lon="-1.5217722"/>
+  <node id="888550296" version="1" timestamp="2010-08-30T12:14:18Z" uid="3114" user="chippy" changeset="5635628" lat="53.8184786" lon="-1.5218733"/>
+  <node id="888550297" version="1" timestamp="2010-08-30T12:14:18Z" uid="3114" user="chippy" changeset="5635628" lat="53.8184153" lon="-1.5227209"/>
+  <node id="888550299" version="1" timestamp="2010-08-30T12:14:19Z" uid="3114" user="chippy" changeset="5635628" lat="53.8183963" lon="-1.5228925"/>
+  <node id="888550303" version="1" timestamp="2010-08-30T12:14:19Z" uid="3114" user="chippy" changeset="5635628" lat="53.8183963" lon="-1.5229462"/>
+  <node id="982576551" version="1" timestamp="2010-11-08T16:01:47Z" uid="354641" user="benholme" changeset="6321708" lat="53.819042" lon="-1.5275837"/>
+  <node id="982576604" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8218224" lon="-1.5264571"/>
+  <node id="982576606" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8217084" lon="-1.5262426"/>
+  <node id="982576608" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8213981" lon="-1.5263713"/>
+  <node id="982576609" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8212841" lon="-1.5266288"/>
+  <node id="982576614" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8197071" lon="-1.5268434"/>
+  <node id="982576615" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8199667" lon="-1.527927"/>
+  <node id="982576616" version="1" timestamp="2010-11-08T16:01:50Z" uid="354641" user="benholme" changeset="6321708" lat="53.8195171" lon="-1.5284634"/>
+  <node id="982577030" version="1" timestamp="2010-11-08T16:02:14Z" uid="354641" user="benholme" changeset="6321708" lat="53.8184327" lon="-1.5224885"/>
+  <node id="982577040" version="1" timestamp="2010-11-08T16:02:14Z" uid="354641" user="benholme" changeset="6321708" lat="53.819447" lon="-1.5215222"/>
+  <node id="982577094" version="1" timestamp="2010-11-08T16:02:16Z" uid="354641" user="benholme" changeset="6321708" lat="53.8188246" lon="-1.5214711"/>
+  <node id="714160798" version="2" timestamp="2012-01-21T21:44:28Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8218583" lon="-1.524333"/>
+  <node id="982577140" version="2" timestamp="2012-01-21T21:44:29Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8217201" lon="-1.5239265"/>
+  <node id="888550047" version="2" timestamp="2012-09-08T23:07:32Z" uid="2330" user="LeedsTracker" changeset="13039300" lat="53.8174954" lon="-1.526033"/>
+  <node id="982577505" version="1" timestamp="2010-11-08T16:02:34Z" uid="354641" user="benholme" changeset="6321708" lat="53.8176548" lon="-1.5254385"/>
+  <node id="982577510" version="1" timestamp="2010-11-08T16:02:34Z" uid="354641" user="benholme" changeset="6321708" lat="53.8175853" lon="-1.5254701"/>
+  <node id="1303834616" version="1" timestamp="2011-05-28T17:04:44Z" uid="21264" user="Pobice" changeset="8273725" lat="53.8219711" lon="-1.5288148"/>
+  <node id="1303834681" version="1" timestamp="2011-05-28T17:04:46Z" uid="21264" user="Pobice" changeset="8273725" lat="53.8211664" lon="-1.5287074"/>
+  <node id="1326210245" version="1" timestamp="2011-06-15T09:39:07Z" uid="469882" user="rex_the_first" changeset="8445503" lat="53.8181681" lon="-1.5286892"/>
+  <node id="1600541449" version="1" timestamp="2012-01-21T21:44:00Z" uid="21264" user="Pobice" changeset="10460105" lat="53.82059" lon="-1.521376">
+    <tag k="amenity" v="telephone"/>
+  </node>
+  <node id="1600541450" version="1" timestamp="2012-01-21T21:44:00Z" uid="21264" user="Pobice" changeset="10460105" lat="53.8207302" lon="-1.5214675"/>
+  <node id="1627024232" version="2" timestamp="2012-12-05T03:04:03Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8180031" lon="-1.5231186">
+    <tag k="amenity" v="place_of_worship"/>
+    <tag k="denomination" v="united_reformed"/>
+    <tag k="name" v="Trinity United Reform Church"/>
+    <tag k="religion" v="christian"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+  </node>
+  <node id="2050786893" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8201843" lon="-1.523664"/>
+  <node id="2050786895" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8196773" lon="-1.5244269"/>
+  <node id="2050786898" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8198358" lon="-1.522641"/>
+  <node id="2050786899" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8199602" lon="-1.5231378"/>
+  <node id="2050786900" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8202716" lon="-1.5228082"/>
+  <node id="2050786903" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8199906" lon="-1.5230877"/>
+  <node id="2050786905" version="1" timestamp="2012-12-05T03:04:00Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8195127" lon="-1.5230053"/>
+  <node id="2050786908" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8195252" lon="-1.5240017"/>
+  <node id="2050786909" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.819686" lon="-1.5234079"/>
+  <node id="2050786912" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8218012" lon="-1.5244278"/>
+  <node id="2050786916" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8197753" lon="-1.5237476"/>
+  <node id="2050786917" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8192625" lon="-1.5232593"/>
+  <node id="2050786918" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8195288" lon="-1.5229497"/>
+  <node id="2050786921" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8204614" lon="-1.5233972"/>
+  <node id="2050786932" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8192708" lon="-1.5240799">
+    <tag k="leisure" v="playground"/>
+  </node>
+  <node id="2050786937" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.819803" lon="-1.5226797"/>
+  <node id="2050786939" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8199264" lon="-1.5241654"/>
+  <node id="2050786943" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8200251" lon="-1.5231893"/>
+  <node id="2050786944" version="1" timestamp="2012-12-05T03:04:01Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8201167" lon="-1.5223615"/>
+  <node id="2050786953" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442" lat="53.8203022" lon="-1.5229226"/>
+  <node id="2517207861" version="1" timestamp="2013-11-02T10:46:55Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8211558" lon="-1.5257391"/>
+  <node id="2517207862" version="1" timestamp="2013-11-02T10:46:55Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8212982" lon="-1.5263721"/>
+  <node id="2517209129" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8207061" lon="-1.5255406"/>
+  <node id="2517209130" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8175954" lon="-1.5285175"/>
+  <node id="2517209131" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8179351" lon="-1.5281584"/>
+  <node id="2517209132" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8201772" lon="-1.5260717"/>
+  <node id="2517209133" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8210101" lon="-1.5255299"/>
+  <node id="2517209134" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8208739" lon="-1.5254601"/>
+  <node id="2517209135" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8188314" lon="-1.526195"/>
+  <node id="2517209136" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8189707" lon="-1.5262648"/>
+  <node id="2517209137" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8191449" lon="-1.5263882"/>
+  <node id="2517209138" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8211114" lon="-1.5256532"/>
+  <node id="2517209139" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8193" lon="-1.5266457"/>
+  <node id="2517209140" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8192525" lon="-1.5265062"/>
+  <node id="2517209141" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8186572" lon="-1.527402"/>
+  <node id="2517209142" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8198226" lon="-1.5263935"/>
+  <node id="2517209143" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8180365" lon="-1.5281262"/>
+  <node id="2517209144" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8183563" lon="-1.5278258"/>
+  <node id="2517209145" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8178338" lon="-1.5283945"/>
+  <node id="2517209146" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8200632" lon="-1.5262487"/>
+  <node id="2517209147" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8177388" lon="-1.5284964"/>
+  <node id="2517209148" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8179225" lon="-1.5278312"/>
+  <node id="2517209149" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8189105" lon="-1.5270855"/>
+  <node id="2517209150" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8181125" lon="-1.5280726"/>
+  <node id="2517209151" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.817875" lon="-1.5274879"/>
+  <node id="2517209152" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8178623" lon="-1.5269997"/>
+  <node id="2517209153" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8178465" lon="-1.5261575"/>
+  <node id="2517209154" version="1" timestamp="2013-11-02T10:50:20Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8179003" lon="-1.5258303"/>
+  <node id="2517209155" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8178575" lon="-1.5253931"/>
+  <node id="2517209156" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8178385" lon="-1.5247949"/>
+  <node id="2517209157" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8179621" lon="-1.5245991"/>
+  <node id="2517209158" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8181806" lon="-1.5250444"/>
+  <node id="2517209159" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.818521" lon="-1.5257552"/>
+  <node id="2517209160" version="1" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874" lat="53.8187142" lon="-1.526077"/>
+  <node id="2517213850" version="1" timestamp="2013-11-02T10:56:23Z" uid="231314" user="RobinLovelace" changeset="18672988" lat="53.8196274" lon="-1.5264877"/>
+  <way id="22818925" version="4" timestamp="2012-12-05T03:04:04Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="245494180"/>
+    <nd ref="245494204"/>
+    <nd ref="245494181"/>
+    <nd ref="248497507"/>
+    <nd ref="245494182"/>
+    <nd ref="2050786912"/>
+    <nd ref="245494183"/>
+    <nd ref="245494184"/>
+    <nd ref="245494185"/>
+    <nd ref="245494186"/>
+    <nd ref="245494180"/>
+    <tag k="leisure" v="park"/>
+    <tag k="name" v="Potternewton Park"/>
+    <tag k="source" v="landsat;npe"/>
+  </way>
+  <way id="22818928" version="10" timestamp="2013-11-02T10:50:21Z" uid="231314" user="RobinLovelace" changeset="18672874">
+    <nd ref="52690521"/>
+    <nd ref="982577477"/>
+    <nd ref="245494198"/>
+    <nd ref="982576555"/>
+    <nd ref="2517209130"/>
+    <nd ref="245494199"/>
+    <nd ref="982577505"/>
+    <nd ref="245494201"/>
+    <nd ref="245494205"/>
+    <nd ref="245494206"/>
+    <nd ref="245494207"/>
+    <nd ref="245494197"/>
+    <nd ref="982576247"/>
+    <nd ref="964813774"/>
+    <nd ref="248497598"/>
+    <nd ref="714231304"/>
+    <nd ref="1601246848"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Harehills Avenue"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+    <tag k="source:name" v="local knowledge"/>
+  </way>
+  <way id="22818956" version="5" timestamp="2012-01-21T21:44:19Z" uid="21264" user="Pobice" changeset="10460105">
+    <nd ref="1600541458"/>
+    <nd ref="245494189"/>
+    <nd ref="245494269"/>
+    <nd ref="1303834469"/>
+    <nd ref="982576603"/>
+    <nd ref="714160796"/>
+    <nd ref="245494270"/>
+    <nd ref="245494271"/>
+    <nd ref="714160805"/>
+    <nd ref="714160792"/>
+    <nd ref="982576617"/>
+    <nd ref="245494272"/>
+    <nd ref="982576576"/>
+    <nd ref="982576482"/>
+    <nd ref="245494273"/>
+    <nd ref="49981335"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Newton Road"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="23033169" version="5" timestamp="2012-01-21T21:44:21Z" uid="21264" user="Pobice" changeset="10460105">
+    <nd ref="248497499"/>
+    <nd ref="248497500"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Roxholme Terrace"/>
+    <tag k="source" v="npe"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="23033170" version="3" timestamp="2011-09-04T12:46:38Z" uid="516850" user="BuildTheRobots" changeset="9208538">
+    <nd ref="248497501"/>
+    <nd ref="248497505"/>
+    <nd ref="248497502"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Roxholme Place"/>
+    <tag k="source" v="npe"/>
+  </way>
+  <way id="23136487" version="4" timestamp="2010-11-08T16:02:49Z" uid="354641" user="benholme" changeset="6321708">
+    <nd ref="245494223"/>
+    <nd ref="964813697"/>
+    <nd ref="964813785"/>
+    <nd ref="982577525"/>
+    <nd ref="245494201"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Spencer Place"/>
+    <tag k="source" v="npe"/>
+  </way>
+  <way id="23136479" version="5" timestamp="2012-12-16T11:35:49Z" uid="82820" user="Mark_S" changeset="14291574">
+    <nd ref="249806201"/>
+    <nd ref="982577489"/>
+    <nd ref="982577430"/>
+    <nd ref="982577641"/>
+    <nd ref="982577353"/>
+    <nd ref="1906141042"/>
+    <nd ref="982577463"/>
+    <nd ref="245494249"/>
+    <nd ref="982577574"/>
+    <nd ref="2050786948"/>
+    <nd ref="982577686"/>
+    <nd ref="245494218"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Hamilton Terrace"/>
+    <tag k="source" v="npe"/>
+    <tag k="source:name" v="OS_OpenData_StreetView"/>
+  </way>
+  <way id="23033171" version="3" timestamp="2011-09-04T12:46:39Z" uid="516850" user="BuildTheRobots" changeset="9208538">
+    <nd ref="248497503"/>
+    <nd ref="248497506"/>
+    <nd ref="982577140"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Roxholme Avenue"/>
+    <tag k="source" v="npe"/>
+  </way>
+  <way id="75246216" version="1" timestamp="2010-08-30T12:14:16Z" uid="3114" user="chippy" changeset="5635628">
+    <nd ref="888550251"/>
+    <nd ref="888550252"/>
+    <nd ref="888550253"/>
+    <nd ref="888550254"/>
+    <nd ref="245494201"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Avenue Hill"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+  </way>
+  <way id="75246221" version="3" timestamp="2012-01-21T21:44:18Z" uid="21264" user="Pobice" changeset="10460105">
+    <nd ref="888550263"/>
+    <nd ref="888550265"/>
+    <nd ref="982577094"/>
+    <nd ref="888550266"/>
+    <tag k="highway" v="residential"/>
+    <tag k="maxspeed" v="20 mph"/>
+    <tag k="name" v="Hilton Road"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+  </way>
+  <way id="22818931" version="4" timestamp="2010-11-08T16:02:59Z" uid="354641" user="benholme" changeset="6321708">
+    <nd ref="245494199"/>
+    <nd ref="982577492"/>
+    <nd ref="982577427"/>
+    <nd ref="982577644"/>
+    <nd ref="245494252"/>
+    <nd ref="982577350"/>
+    <nd ref="982577631"/>
+    <nd ref="245494211"/>
+    <nd ref="982577577"/>
+    <nd ref="245494246"/>
+    <nd ref="982577688"/>
+    <nd ref="245494212"/>
+    <nd ref="982577670"/>
+    <nd ref="982577661"/>
+    <nd ref="245494256"/>
+    <nd ref="982576373"/>
+    <nd ref="245494260"/>
+    <nd ref="982576359"/>
+    <nd ref="982576462"/>
+    <nd ref="245494263"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Hamilton Place"/>
+    <tag k="source" v="npe"/>
+  </way>
+  <way id="23136477" version="12" timestamp="2013-07-02T16:22:04Z" uid="469882" user="rex_the_first" changeset="16794087">
+    <nd ref="245494217"/>
+    <nd ref="245494216"/>
+    <nd ref="964808230"/>
+    <nd ref="964815883"/>
+    <nd ref="964815887"/>
+    <nd ref="888550223"/>
+    <nd ref="982577196"/>
+    <nd ref="2370880039"/>
+    <nd ref="964815881"/>
+    <nd ref="982578081"/>
+    <nd ref="982577201"/>
+    <nd ref="245494231"/>
+    <nd ref="982577241"/>
+    <nd ref="245494214"/>
+    <nd ref="964815876"/>
+    <nd ref="982577230"/>
+    <nd ref="964813905"/>
+    <nd ref="982577272"/>
+    <nd ref="245494223"/>
+    <nd ref="982577369"/>
+    <nd ref="249806203"/>
+    <nd ref="982577455"/>
+    <nd ref="249806199"/>
+    <nd ref="982577339"/>
+    <nd ref="888550047"/>
+    <nd ref="249806201"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Shepherds Lane"/>
+    <tag k="source" v="npe"/>
+    <tag k="source:name" v="local knowledge"/>
+  </way>
+  <way id="75246223" version="3" timestamp="2012-06-06T18:22:43Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="888550271"/>
+    <nd ref="982577070"/>
+    <nd ref="245496320"/>
+    <nd ref="1778268320"/>
+    <nd ref="888550265"/>
+    <nd ref="982577040"/>
+    <nd ref="888550252"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Hilton Grove"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="22818941" version="9" timestamp="2012-12-01T21:09:49Z" uid="106831" user="sc71" changeset="14117188">
+    <nd ref="245494205"/>
+    <nd ref="982573989"/>
+    <nd ref="245494235"/>
+    <nd ref="964813776"/>
+    <nd ref="982577248"/>
+    <nd ref="2045076967"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Shepherds  Place"/>
+    <tag k="source" v="npe"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="75246236" version="5" timestamp="2013-07-02T20:03:23Z" uid="469882" user="rex_the_first" changeset="16797033">
+    <nd ref="888550291"/>
+    <nd ref="888550293"/>
+    <nd ref="1778268318"/>
+    <nd ref="888550271"/>
+    <nd ref="888550295"/>
+    <nd ref="2371179130"/>
+    <nd ref="888550266"/>
+    <nd ref="888550296"/>
+    <nd ref="982577030"/>
+    <nd ref="888550297"/>
+    <nd ref="888550299"/>
+    <nd ref="888550303"/>
+    <nd ref="888550254"/>
+    <tag k="highway" v="residential"/>
+    <tag k="maxspeed" v="20 mph"/>
+    <tag k="name" v="Avenue Crescent"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+  </way>
+  <way id="84564160" version="3" timestamp="2012-01-21T21:44:22Z" uid="21264" user="Pobice" changeset="10460105">
+    <nd ref="982576871"/>
+    <nd ref="982576872"/>
+    <nd ref="982576873"/>
+    <nd ref="982576292"/>
+    <nd ref="1600541450"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Sycamore Avenue"/>
+  </way>
+  <way id="84564194" version="3" timestamp="2012-06-06T18:22:29Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="982577030"/>
+    <nd ref="982577040"/>
+    <nd ref="982577042"/>
+    <tag k="highway" v="service"/>
+    <tag k="name" v="Back Hilton Road"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="115377548" version="1" timestamp="2011-05-28T17:04:52Z" uid="21264" user="Pobice" changeset="8273725">
+    <nd ref="1303834556"/>
+    <nd ref="1303834710"/>
+    <nd ref="1303834616"/>
+    <nd ref="1303834783"/>
+    <nd ref="1303834556"/>
+    <tag k="building" v="yes"/>
+    <tag k="source" v="Bing"/>
+  </way>
+  <way id="115377554" version="1" timestamp="2011-05-28T17:04:53Z" uid="21264" user="Pobice" changeset="8273725">
+    <nd ref="1303834476"/>
+    <nd ref="1303834750"/>
+    <nd ref="1303834582"/>
+    <nd ref="1303834632"/>
+    <nd ref="1303834755"/>
+    <nd ref="1303834421"/>
+    <nd ref="1303834637"/>
+    <nd ref="1303834681"/>
+    <nd ref="1303834612"/>
+    <nd ref="1303834662"/>
+    <nd ref="1303834497"/>
+    <nd ref="1303834546"/>
+    <nd ref="1303834663"/>
+    <nd ref="1303834715"/>
+    <nd ref="1303834552"/>
+    <nd ref="1303834741"/>
+    <nd ref="1303834630"/>
+    <nd ref="1303834476"/>
+    <tag k="amenity" v="hospital"/>
+    <tag k="name" v="Chapel Allerton Hospital"/>
+    <tag k="operator" v="The Leeds Teaching Hospitals NHS Trust"/>
+  </way>
+  <way id="146820169" version="4" timestamp="2012-06-06T18:22:40Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="1600541452"/>
+    <nd ref="714160794"/>
+    <nd ref="982576903"/>
+    <nd ref="248496685"/>
+    <nd ref="714160785"/>
+    <nd ref="248497500"/>
+    <nd ref="248497502"/>
+    <nd ref="714160798"/>
+    <nd ref="982577140"/>
+    <nd ref="248497504"/>
+    <nd ref="245494191"/>
+    <nd ref="714160789"/>
+    <nd ref="1600541450"/>
+    <nd ref="888550251"/>
+    <nd ref="982576926"/>
+    <nd ref="982577042"/>
+    <nd ref="245494203"/>
+    <nd ref="982576934"/>
+    <nd ref="888550263"/>
+    <nd ref="982577056"/>
+    <nd ref="982577062"/>
+    <nd ref="245496325"/>
+    <nd ref="982576949"/>
+    <nd ref="245496322"/>
+    <nd ref="1778268321"/>
+    <nd ref="245496318"/>
+    <nd ref="248497605"/>
+    <nd ref="982576226"/>
+    <nd ref="888550291"/>
+    <nd ref="248497601"/>
+    <nd ref="245494197"/>
+    <nd ref="1778268317"/>
+    <nd ref="245494228"/>
+    <nd ref="964811998"/>
+    <nd ref="982577119"/>
+    <nd ref="245494232"/>
+    <nd ref="1601644796"/>
+    <nd ref="964811582"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="lit" v="yes"/>
+    <tag k="name" v="Harehills Lane"/>
+    <tag k="ref" v="B6159"/>
+    <tag k="source" v="OS_OpenData_StreetView"/>
+  </way>
+  <way id="117798497" version="2" timestamp="2011-06-15T10:30:41Z" uid="469882" user="rex_the_first" changeset="8445503">
+    <nd ref="1326210245"/>
+    <nd ref="1326210247"/>
+    <nd ref="1326210246"/>
+    <nd ref="982576558"/>
+    <tag k="highway" v="footway"/>
+  </way>
+  <way id="84564106" version="3" timestamp="2013-11-02T10:43:21Z" uid="231314" user="RobinLovelace" changeset="18672840">
+    <nd ref="982576603"/>
+    <nd ref="982576604"/>
+    <nd ref="982576606"/>
+    <nd ref="982576608"/>
+    <nd ref="982576609"/>
+    <nd ref="714160796"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Newton Garth"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="84564200" version="2" timestamp="2012-06-06T18:22:43Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="982577065"/>
+    <nd ref="982577094"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Hilton Terrace"/>
+  </way>
+  <way id="84564109" version="2" timestamp="2012-06-06T18:22:45Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="982576614"/>
+    <nd ref="982576615"/>
+    <nd ref="982576616"/>
+    <nd ref="982576617"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Newton Park Drive"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="84564090" version="3" timestamp="2012-06-06T18:22:45Z" uid="222996" user="ca_hoot" changeset="11818161">
+    <nd ref="982576551"/>
+    <nd ref="1326210245"/>
+    <nd ref="982576552"/>
+    <nd ref="982576553"/>
+    <nd ref="982576555"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Newton Park View"/>
+    <tag k="source:name" v="OS_OpenData_Locator"/>
+  </way>
+  <way id="84564273" version="3" timestamp="2012-12-01T21:09:37Z" uid="106831" user="sc71" changeset="14117188">
+    <nd ref="982577505"/>
+    <nd ref="982577510"/>
+    <nd ref="982577519"/>
+    <nd ref="982577399"/>
+    <tag k="highway" v="service"/>
+    <tag k="name" v="Back Shepherds Lane"/>
+  </way>
+  <way id="194574580" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="2050786903"/>
+    <nd ref="2050786898"/>
+    <nd ref="2050786944"/>
+    <nd ref="2050786900"/>
+    <nd ref="2050786903"/>
+    <tag k="leisure" v="pitch"/>
+    <tag k="sport" v="bowls"/>
+  </way>
+  <way id="194574582" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="2050786899"/>
+    <nd ref="2050786937"/>
+    <nd ref="2050786918"/>
+    <nd ref="2050786909"/>
+    <nd ref="2050786899"/>
+    <tag k="leisure" v="pitch"/>
+    <tag k="sport" v="bowls"/>
+  </way>
+  <way id="194574584" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="2050786895"/>
+    <nd ref="2050786939"/>
+    <nd ref="2050786916"/>
+    <nd ref="2050786908"/>
+    <nd ref="2050786895"/>
+    <tag k="leisure" v="pitch"/>
+    <tag k="sport" v="skateboard"/>
+  </way>
+  <way id="194574585" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="2050786917"/>
+    <nd ref="2050786905"/>
+    <nd ref="2050786916"/>
+    <nd ref="2050786908"/>
+    <nd ref="2050786917"/>
+    <tag k="leisure" v="pitch"/>
+    <tag k="sport" v="tennis"/>
+  </way>
+  <way id="194574587" version="1" timestamp="2012-12-05T03:04:02Z" uid="493595" user="Yorvik Prestigitator" changeset="14159442">
+    <nd ref="2050786921"/>
+    <nd ref="2050786893"/>
+    <nd ref="2050786943"/>
+    <nd ref="2050786953"/>
+    <nd ref="2050786921"/>
+    <tag k="leisure" v="pitch"/>
+    <tag k="sport" v="bowls"/>
+  </way>
+  <way id="244396923" version="1" timestamp="2013-11-02T10:56:24Z" uid="231314" user="RobinLovelace" changeset="18672988">
+    <nd ref="982576614"/>
+    <nd ref="2517213850"/>
+    <tag k="access" v="permissive"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="foot" v="yes"/>
+    <tag k="highway" v="footway"/>
+    <tag k="motor_vehicle" v="no"/>
+  </way>
+  <way id="244396574" version="3" timestamp="2013-11-08T21:45:13Z" uid="38588" user="mentor" changeset="18790305">
+    <nd ref="2517209138"/>
+    <nd ref="2517209133"/>
+    <nd ref="2517209134"/>
+    <nd ref="2517209129"/>
+    <nd ref="2517209132"/>
+    <nd ref="2517209146"/>
+    <nd ref="2517209142"/>
+    <nd ref="2517213850"/>
+    <nd ref="2517209139"/>
+    <nd ref="2517209149"/>
+    <nd ref="2517209141"/>
+    <nd ref="2517209144"/>
+    <nd ref="2517209150"/>
+    <nd ref="2517209143"/>
+    <nd ref="2517209131"/>
+    <tag k="highway" v="footway"/>
+    <tag k="name" v="Potternewton Park path"/>
+  </way>
+  <way id="244396424" version="2" timestamp="2013-11-04T07:44:24Z" uid="322785" user="BCNorwich" changeset="18707417">
+    <nd ref="2517207861"/>
+    <nd ref="2517207862"/>
+    <nd ref="982576608"/>
+    <tag k="bicycle" v="yes"/>
+    <tag k="foot" v="yes"/>
+    <tag k="highway" v="path"/>
+  </way>
+  <way id="245245694" version="1" timestamp="2013-11-08T21:45:12Z" uid="38588" user="mentor" changeset="18790305">
+    <nd ref="2517209130"/>
+    <nd ref="2517209147"/>
+    <nd ref="2517209145"/>
+    <nd ref="2517209131"/>
+    <nd ref="2517209148"/>
+    <nd ref="2517209151"/>
+    <nd ref="2517209152"/>
+    <nd ref="2517209153"/>
+    <nd ref="2517209154"/>
+    <nd ref="2517209155"/>
+    <nd ref="2517209156"/>
+    <nd ref="2517209157"/>
+    <nd ref="2517209158"/>
+    <nd ref="2517209159"/>
+    <nd ref="2517209160"/>
+    <nd ref="2517209135"/>
+    <nd ref="2517209136"/>
+    <nd ref="2517209137"/>
+    <nd ref="2517209140"/>
+    <nd ref="2517209139"/>
+    <tag k="highway" v="footway"/>
+    <tag k="name" v="Potternewton Park path"/>
+  </way>
+  <relation id="248151" version="3" timestamp="2010-02-16T14:37:16Z" uid="91657" user="Pink Duck" changeset="3891683">
+    <member type="node" ref="496722044" role=""/>
+    <member type="node" ref="496722045" role=""/>
+    <tag k="name" v="Harehills Lane at Roxholme Avenue"/>
+    <tag k="naptan:StopAreaCode" v="450G4715"/>
+    <tag k="naptan:StopAreaType" v="GPBS"/>
+    <tag k="naptan:verified" v="no"/>
+    <tag k="site" v="stop_area"/>
+    <tag k="source" v="naptan_import"/>
+    <tag k="type" v="site"/>
+  </relation>
+  <relation id="1269665" version="2" timestamp="2012-01-21T21:44:11Z" uid="21264" user="Pobice" changeset="10460105">
+    <member type="way" ref="5098649" role="from"/>
+    <member type="node" ref="964811582" role="via"/>
+    <member type="way" ref="146820169" role="to"/>
+    <tag k="restriction" v="no_left_turn"/>
+    <tag k="type" v="restriction"/>
+  </relation>
+  <relation id="195910" version="124" timestamp="2013-07-31T23:59:38Z" uid="38588" user="mentor" changeset="17173372">
+    <member type="way" ref="5082950" role=""/>
+    <member type="way" ref="39002261" role=""/>
+    <member type="way" ref="22818969" role=""/>
+    <member type="way" ref="146820169" role=""/>
+    <member type="way" ref="85032940" role=""/>
+    <member type="way" ref="57402542" role=""/>
+    <member type="node" ref="325227252" role=""/>
+    <member type="node" ref="325227278" role=""/>
+    <member type="node" ref="325227215" role=""/>
+    <member type="way" ref="5088537" role=""/>
+    <member type="way" ref="23162150" role=""/>
+    <member type="node" ref="250755709" role=""/>
+    <member type="node" ref="250755708" role=""/>
+    <member type="way" ref="39006849" role=""/>
+    <member type="way" ref="22878548" role=""/>
+    <member type="node" ref="250756723" role=""/>
+    <member type="node" ref="250756725" role=""/>
+    <member type="node" ref="250756726" role=""/>
+    <member type="way" ref="6014542" role=""/>
+    <member type="node" ref="250756729" role=""/>
+    <member type="node" ref="250756731" role=""/>
+    <member type="way" ref="6013868" role=""/>
+    <member type="way" ref="70803198" role=""/>
+    <member type="way" ref="70803195" role=""/>
+    <member type="node" ref="52841989" role=""/>
+    <member type="node" ref="250390207" role=""/>
+    <member type="node" ref="52841991" role=""/>
+    <member type="way" ref="22723290" role=""/>
+    <member type="way" ref="4004379" role=""/>
+    <member type="node" ref="332329804" role=""/>
+    <member type="node" ref="332329803" role=""/>
+    <member type="node" ref="302744750" role=""/>
+    <member type="node" ref="302744748" role=""/>
+    <member type="node" ref="302744752" role=""/>
+    <member type="node" ref="302744753" role=""/>
+    <member type="node" ref="302744754" role=""/>
+    <member type="way" ref="6074958" role=""/>
+    <member type="way" ref="127784268" role=""/>
+    <member type="way" ref="31741284" role=""/>
+    <member type="way" ref="31741283" role=""/>
+    <member type="way" ref="157474325" role=""/>
+    <member type="node" ref="301189583" role=""/>
+    <member type="node" ref="301189585" role=""/>
+    <member type="node" ref="301189586" role=""/>
+    <member type="way" ref="100520651" role="forward"/>
+    <member type="way" ref="27293415" role="forward"/>
+    <member type="way" ref="27293414" role="forward"/>
+    <member type="way" ref="39007429" role="forward"/>
+    <member type="way" ref="27145091" role=""/>
+    <member type="way" ref="27439543" role="forward"/>
+    <member type="way" ref="27439544" role="forward"/>
+    <member type="way" ref="27421567" role="forward"/>
+    <member type="way" ref="27421568" role="forward"/>
+    <member type="node" ref="301031808" role=""/>
+    <member type="node" ref="301031806" role=""/>
+    <member type="way" ref="39007505" role=""/>
+    <member type="way" ref="93279582" role=""/>
+    <member type="way" ref="6620691" role=""/>
+    <member type="way" ref="24664884" role=""/>
+    <member type="way" ref="5574047" role=""/>
+    <member type="way" ref="6148725" role=""/>
+    <member type="way" ref="39007580" role=""/>
+    <member type="way" ref="39007650" role=""/>
+    <member type="way" ref="206727624" role=""/>
+    <member type="way" ref="7973769" role=""/>
+    <member type="way" ref="22879786" role=""/>
+    <member type="way" ref="27144988" role=""/>
+    <member type="way" ref="27144989" role=""/>
+    <member type="way" ref="5739825" role=""/>
+    <member type="way" ref="5739826" role=""/>
+    <member type="way" ref="39007747" role="forward"/>
+    <member type="way" ref="37887883" role="forward"/>
+    <member type="way" ref="39072087" role=""/>
+    <member type="way" ref="39179018" role=""/>
+    <member type="way" ref="27006497" role="forward"/>
+    <member type="way" ref="39179016" role="forward"/>
+    <member type="way" ref="39211574" role=""/>
+    <member type="way" ref="39691289" role=""/>
+    <member type="way" ref="39691307" role=""/>
+    <member type="way" ref="39007743" role="forward"/>
+    <member type="way" ref="231974265" role="forward"/>
+    <member type="way" ref="39976775" role=""/>
+    <member type="way" ref="39976874" role=""/>
+    <member type="way" ref="39976888" role="forward"/>
+    <member type="node" ref="455593484" role=""/>
+    <member type="node" ref="455593481" role=""/>
+    <member type="node" ref="496718020" role=""/>
+    <member type="node" ref="496718022" role=""/>
+    <member type="node" ref="455593381" role=""/>
+    <member type="way" ref="145209918" role="forward"/>
+    <member type="way" ref="25024604" role="forward"/>
+    <member type="way" ref="54653668" role=""/>
+    <member type="way" ref="54842559" role=""/>
+    <member type="way" ref="149748789" role=""/>
+    <tag k="operator" v="First Leeds"/>
+    <tag k="ref" v="91A"/>
+    <tag k="route" v="bus"/>
+    <tag k="type" v="route"/>
+  </relation>
+</osm>
