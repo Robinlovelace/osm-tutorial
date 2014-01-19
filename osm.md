@@ -1,14 +1,24 @@
 Open Street Map: loading, analysing and visualising the Wikipedia of maps with R and other free tools
 ========================================================
 
+This tutorial shows how open source tools can be used to 
+harness a huge and rapidly growing open source geodatabase: Open Street Map.
+
 ## Introduction
 
-Open Street Map is a crowd-sourced map of the world, the archetype of 'volunteered geographical information'
-(Goodchild 2007). Putting the public in charge of editing the world's surface may seem like a risky 
-business, given that cartographers have specialist skills developed over centuries. Yet the emergence 
-of high resolution aerial photography covering the entirety of the Earth's surface and the 
-explosion in GPS ownership via smartphones has enabled citizens to become accurate sensors of the world, 
-with the added advantage that they are likely to know their local areas far better than any cartographer.
+Open Street Map (OSM) is a crowd-sourced map of the world, 
+the archetype of 'volunteered geographical information'
+([Goodchild 2007](http://www.ncgia.ucsb.edu/projects/vgi/docs/position/Goodchild_VGI2007.pdf)).
+Putting the public in charge of 
+editing the world's surface may seem like a risky 
+business, given that cartographers have specialist skills 
+developed over centuries. Yet the emergence 
+of high resolution aerial photography covering the entirety 
+of the Earth's surface and the 
+explosion in GPS ownership via smartphones has enabled citizens 
+to become accurate sensors of the world, 
+with the added advantage that they are likely to know their local 
+areas far better than any cartographer.
 
 Of course there are teething issues with any large-scale open source database, including variable data quality, 
 patchy and incomplete coverage and inconsistencies from place to place (Haklay 2010). Yet all of these
@@ -20,7 +30,30 @@ many applications *already*. These include:
 - Ability to share data with anyone without breaching license
 
 In additions there are a number of ethical benefits of using OSM: it's community
-a map for the greater good ([Wroclawski 2014](http://www.theguardian.com/technology/2014/jan/14/why-the-world-needs-openstreetmap)).
+a map for the greater good ([Wroclawski 2014](http://www.theguardian.com/technology/2014/jan/14/why-the-world-needs-openstreetmap)). 
+Two excellent examples of the advantages of OSM's open data approach help underline the
+ethical side of OSM data. [Tindale](http://explore.ramanitanzania.org/), 
+a settlement in Tanzania that has been mapped rapidly 
+thanks to a single academic project, in collaboration with the authorities, enabling 
+better policy making in the area (see [video](http://www.youtube.com/watch?v=KqrGyvNnWkA)). Second, 
+the rapid response of the OSM community to the Typhoon Haiyan disaster. In a matter of days, an 
+army of volunteers had helped to map out the affected zone, aiding relief efforts (e.g. see
+[MapBox's blog posts on the subject](https://www.mapbox.com/blog/typhoon-haiyan-openstreetmap/)).
+
+In this tutorial we focus simply on the technical challenge of extracting the 
+data from servers 'in the cloud' and onto your desktop. We also cover some basic 
+tasks in handling, subsetting and visualising the data.
+There is already some good on-line material about OSM data, including:
+
+- a [paper](http://www.mdpi.com/1999-5903/5/2/282/pdf) comparing the quality and 
+coverage of OSM map data in different parts of the world
+- an [overview](http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf)
+of handling OSM data in ArcMap
+- a [tutorial](http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1) illustrating 
+its potential use for GIS education and store location planning
+
+This tutorial is focussed on loading the data in two free and open source programs, 
+QGIS and R. 
 
 ## Getting the data
 
