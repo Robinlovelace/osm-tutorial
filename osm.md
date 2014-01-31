@@ -15,14 +15,27 @@ as described below.
 Open Street Map (OSM) is a crowd-sourced map of the world, 
 the archetype of 'volunteered geographical information'
 ([Goodchild 2007](http://www.ncgia.ucsb.edu/projects/vgi/docs/position/Goodchild_VGI2007.pdf)).
+The aim is simple: "to create a set of map data that’s free
+to use, editable, and licensed under new
+copyright schemes", as described in an excellent review 
+article on the subject 
+([Haklay and Weber 2008](http://discovery.ucl.ac.uk/13849/1/13849.pdf))
 Putting the public in charge of 
 editing the world's surface may seem like a risky 
 business, given that cartographers have specialist skills 
-developed over centuries. Yet the emergence 
+developed over centuries (as described in 
+[Mapping the Void](https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping_the_Void_-_Mapping_the_Void_b03s6mf0_default.m4a) an excellent BBC Radio 4 Documentary
+on the subject (Salisbury and Jenkins 2014). 
+Yet the emergence 
 of high resolution aerial photography covering the entirety 
 of the Earth's surface and the 
 explosion in GPS ownership via smartphones has enabled citizens 
-to become accurate sensors of the world, 
+to become accurate sensors of the world. 
+[Neis et al. (2012)](http://www.mdpi.com/1999-5903/4/1/1/pdf)
+believe this phenomenon is more than merely technological.
+In OSM, they see a "revolutionary paradigm shift on how map data is 
+being collected".
+
 with the added advantage that they are likely to know their local 
 areas far better than any cartographer. 
 
@@ -40,11 +53,15 @@ many applications *already*. These include:
 
 In additions there are a number of ethical benefits of using OSM: it's community
 a map for the greater good ([Wroclawski 2014](http://www.theguardian.com/technology/2014/jan/14/why-the-world-needs-openstreetmap)). 
-Two excellent examples of the advantages of OSM's open data approach help underline the
+
+There is a strong community of OSM volunteers who use the service for humanitarian purposes
+(Salisbury and Jenkins 2014).
+Two excellent examples of this help underline the
 ethical side of OSM data. [Tindale](http://explore.ramanitanzania.org/), 
 a settlement in Tanzania that has been mapped rapidly 
 thanks to a single academic project, in collaboration with the authorities, enabling 
-better policy making in the area (see [video](http://www.youtube.com/watch?v=KqrGyvNnWkA)). Second, 
+better policy making in the area (see [video](http://www.youtube.com/watch?v=KqrGyvNnWkA)). 
+Second, 
 the rapid response of the OSM community to the Typhoon Haiyan disaster. In a matter of days, an 
 army of volunteers had helped to map out the affected zone, aiding relief efforts (e.g. see
 [MapBox's blog posts on the subject](https://www.mapbox.com/blog/typhoon-haiyan-openstreetmap/)).
@@ -53,7 +70,7 @@ army of volunteers had helped to map out the affected zone, aiding relief effort
 
 All of the code and data used to create this tutorial is available 
 on [GitHub](http://github.com). Feel free to download the project as a `.zip` file from the 
-[project's repository](https://github.com/Robinlovelace/osm-tutorial) and, 
+[project's repository](https://github.com/Robinlovelace/osm-tutorial) entitled osm-tutorial and, 
 if you would like to modify or improve it 
 in any way, please fork a version for you own use, crediting the original where appropriate.
 
@@ -108,7 +125,7 @@ load the file. Choose the type of spatial data you would like to load -
 Points, Lines or Polygons. At this stage one can also select which variables 
 ("Tags") you would like to add to the attribute data.
 
-![Select Polylines](osmfigs/open-osm.db.png)
+![Select Polylines](osmfigs/open-osmdb.png)
 
 The data is now loaded into QGIS allowing standard methods of analysis. 
 You will notice that the data are not styled at all, leading to very bland 
@@ -125,8 +142,9 @@ Next, let's see how R can handle OSM data, via the `osmar` package.
 
 `osmar` is an R package for downloading and interrogating OSM data that accesses 
 the data directly from the internet via the R command line.
-There is an excellent [online tutorial](http://journal.r-project.org/archive/2013-1/eugster-schlesinger.pdf)
-which provides a detailed account of the package. 
+There is an excellent
+[online tutorial](http://journal.r-project.org/archive/2013-1/eugster-schlesinger.pdf)
+which provides a detailed account of the package (Eugster & Schlesinger, 2012). 
 Here we will focus on loading some basic data on bicycle paths in Leeds.
 First the package must be loaded:
 
@@ -163,7 +181,7 @@ plot(ctown)
 points(-1.53492, 53.81934, col = "red", lwd = 5)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk Preliminary plot of Chapletown with osmar](figure/Preliminary_plot_of_Chapletown_with_osmar.png) 
 
 
 This shows that the data has successfully been loaded and saved as an 
@@ -284,7 +302,7 @@ plot(ctown)
 plot_ways(bikePaths, add = T, col = "red", lwd = 3)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+![plot of chunk Bike paths of Chapeltown](figure/Bike_paths_of_Chapeltown.png) 
 
 
 The above code block is used to identify all ways in which cycling 
@@ -318,7 +336,7 @@ plot(ctown)
 plot_ways(res, add = T, col = "green", lwd = 3)
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk Residential streets in Chapeltown](figure/Residential_streets_in_Chapeltown.png) 
 
 
 # Handling raw OSM data
@@ -343,7 +361,25 @@ command line (e.g. for batch processing).
 First we need a bounding box of all items containing the 
 text string "Potternewton Park". For this we use `osmar`:
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8.png) 
+
+```r
+potter <- find(ctown, way(tags(grepl("Potternewton Park", ctown$ways$tags$v))))
+potter <- find_down(ctown, way(potter))
+potter <- subset(ctown, ids = potter)
+plot_ways(potter)  # sanity check
+```
+
+![plot of chunk Line data of Potternewton park](figure/Line_data_of_Potternewton_park.png) 
+
+```r
+potter.l <- as_sp(potter, "lines")  # convert data to sp class
+b <- bbox(potter.l)  # save the bounding box
+b[1, ] <- (b[1, ] - mean(b[1, ])) * 1.05 + mean(b[1, ])
+b[2, ] <- (b[2, ] - mean(b[2, ])) * 1.05 + mean(b[2, ])
+# scale longitude and latitude (increase bb by 5% for plot) replace 1.05
+# with 1.xx for an xx% increase in the plot size
+b
+```
 
 ```
 ##      min    max
@@ -373,7 +409,7 @@ potter <- get_osm(bp, src)
 plot(potter)
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9.png) 
+![plot of chunk All OSM data in and directly surround Potternewton Park](figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png) 
 
 
 Local knowledge or a quick look on an online will confirm that this is 
@@ -425,16 +461,21 @@ evolving open source web mapping technologies such as
 With the certainty of peak oil and possibility of 
 effective climate change regulations, trasport will become increasing 
 expensive in future years. Thus, the tendency towards geographical 
-homogenisation of economic activity may go into reverse (Ruben 2009; Greer 2009; 
-Friedrichs 2009). This is bad news for many, but it is good news for people with 
+homogenisation of economic activity may go into reverse 
+([Greer 2009](http://books.google.co.uk/books?hl=en&lr=&id=mkV_knlze0QC&oi=fnd&pg=PP2&dq=ecotechnic+future&ots=nATRuCVL31&sig=bwafIZ7kfmZMK1EscQcKyIGeYsU&redir_esc=y#v=onepage&q=ecotechnic%20future&f=false); 
+[Curtis  2009](http://www.sciencedirect.com/science/article/pii/S0921800909003334)). 
+This is bad news for many, but it is good news for people with 
 a strong interest in regional diversity, local economies and geographic diversity. 
+
 It is also potentially good news for geographers advocating for location-specific 
 solutions. With increased concern over the 
 highly centralised power structures of the internet following the 
 revelations leaked by Edward Snowdon about massive online spying 
 and infringement of digital privacy, there 
 is a huge potential for community-based, problem-specific solutions.
-It is with this wider context in mind that this tutorial ends.
+It is with this wider context in mind that this tutorial ends - 
+think of the potential benefits if citizens were encouraged to be
+both producers and consumers of the maps on which we all now depend.
 Happy mapping!
 
 # Further on-line resources
@@ -449,6 +490,31 @@ of handling OSM data in ArcMap
 its potential use for GIS education and store location planning
 
 # References 
+
+Curtis, F. (2009). Peak globalization: Climate change, oil depletion and global trade. Ecological Economics, 69(2), 427-434.
+
+Eugster, M. J., & Schlesinger, T. (2013). osmar: OpenStreetMap and R. The R Journal, 5(1), 53-63.
+
+Goodchild, M. F. (2007). Citizens as sensors: the world of volunteered
+geography. GeoJournal, 69(4), 211–221.
+
+Greer, J. M. (2009). The Ecotechnic Future: Envisioning a post-peak world. New Society Publishers.
+
+Haklay, M., & Weber, P. (2008). Openstreetmap: User-generated street maps. Pervasive Computing, IEEE, 7(4), 12-18.
+
+Neis, P., Zielstra, D., & Zipf, A. (2011). The street network evolution of crowdsourced maps: OpenStreetMap in Germany 2007–2011. Future Internet, 4(1), 1-21.
+
+Salisbury, C. & Jenkins, J. (2014). Mapping the Void.  Broadcast on BBC Radio 4, 11:00AM Mon, 27 Jan 2014. Available on I-Player until 11:32AM Mon, 3 Feb 2014. Available on my 
+[Dropbox account](https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping_the_Void_-_Mapping_the_Void_b03s6mf0_default.m4a) for forseable future.
+
+Wroclawski, S. (2014). Why the world needs OpenStreetMap. The Guardian. Tuesday 14 January 2014 11.52 GMT.
+
+
+```r
+source("md2pdf.R")  # convert knitr document to LaTeX
+```
+
+
 
 
 
