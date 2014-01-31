@@ -101,10 +101,35 @@ become accurate sensors of the world.
 \href{http://www.mdpi.com/1999-5903/4/1/1/pdf}{Neis et al. (2012)}
 believe this phenomenon is more than merely technological. In OSM, they
 see a ``revolutionary paradigm shift on how map data is being
-collected''.
+collected''. Citizen cartographers have the added advantage that they
+are likely to know their local areas far better than any cartographer.
 
-with the added advantage that they are likely to know their local areas
-far better than any cartographer.
+This tutorial adds a small nugget of information to the growing
+literature on OSM, by demonstrating how the data can be accessed for
+teaching or research materials. It's a completely free and open dataset,
+so we may as well use it! There is already some good on-line material
+about OSM data, including:
+
+\begin{itemize}
+\item
+  a \href{http://www.mdpi.com/1999-5903/5/2/282/pdf}{paper} comparing
+  the quality and coverage of OSM map data in different parts of the
+  world
+\item
+  an
+  \href{http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf}{overview}
+  of handling OSM data in ArcMap
+\item
+  a
+  \href{http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1}{tutorial}
+  illustrating its potential use for GIS education and store location
+  planning
+\end{itemize}
+Yet nothing has focussed on simply loading the data using different
+tools. In this paper we use QGIS and R because these are (arguably) the
+most popular open source programmes used by geographers, the discipline
+with most to gain from OSM data. Before delving into the method (which
+is actually quite straightforward), let's put OSM data in context.
 
 \subsection{Why (and why not) use OSM data?}
 
@@ -112,8 +137,8 @@ Of course there are teething issues with any large-scale open source
 database, including variable data quality, patchy and incomplete
 coverage and inconsistencies from place to place (Haklay 2010). Yet all
 of these issues are gradually being out. The advantages of Open Street
-Map outweight these downsides for many applications \emph{already}.
-These include:
+Map outweigh these downsides for many applications \emph{already}. These
+include:
 
 \begin{itemize}
 \item
@@ -549,10 +574,10 @@ database:
   The data can be accessed by a variety of 3rd party programs
 \item
   Spatial queries can be made by a variety of clients accessing the db,
-  widening the funcionallity
+  widening the functionality
 \item
   Huge datasets can be stored in a database, as it sits on the hard
-  disk, only being transfered to RAM when a specific query is called
+  disk, only being transferred to RAM when a specific query is called
 \end{itemize}
 Because of the size and complexity of the planet-wide OSM database, it
 must be stored in an spatial database to be used. For this use the
@@ -581,8 +606,10 @@ rapidly evolving open source web mapping technologies such as
 \href{http://leafletjs.com/}{Leaflet} and
 \href{https://www.djangoproject.com/}{GeoDjango}.
 
+\section{Conclusion}
+
 With the certainty of peak oil and possibility of effective climate
-change regulations, trasport will become increasing expensive in future
+change regulations, transport will become increasing expensive in future
 years. Thus, the tendency towards geographical homogenisation of
 economic activity may go into reverse
 (\href{http://books.google.co.uk/books?hl=en\&lr=\&id=mkV\_knlze0QC\&oi=fnd\&pg=PP2\&dq=ecotechnic+future\&ots=nATRuCVL31\&sig=bwafIZ7kfmZMK1EscQcKyIGeYsU\&redir\_esc=y\#v=onepage\&q=ecotechnic\%20future\&f=false}{Greer
@@ -602,25 +629,6 @@ this tutorial ends - think of the potential benefits if citizens were
 encouraged to be both producers and consumers of the maps on which we
 all now depend. Happy mapping!
 
-\section{Further on-line resources}
-
-There is already some good on-line material about OSM data, including:
-
-\begin{itemize}
-\item
-  a \href{http://www.mdpi.com/1999-5903/5/2/282/pdf}{paper} comparing
-  the quality and coverage of OSM map data in different parts of the
-  world
-\item
-  an
-  \href{http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf}{overview}
-  of handling OSM data in ArcMap
-\item
-  a
-  \href{http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1}{tutorial}
-  illustrating its potential use for GIS education and store location
-  planning
-\end{itemize}
 \section{References}
 
 Curtis, F. (2009). Peak globalization: Climate change, oil depletion and

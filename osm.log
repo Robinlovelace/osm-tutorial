@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.20)  31 JAN 2014 00:32
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.6.20)  31 JAN 2014 00:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -611,128 +611,130 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 71.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 115.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<figure/Manual_selection_of_bounding_box.png, id=74, 867.24pt x 578.16pt>
+<figure/Manual_selection_of_bounding_box.png, id=76, 867.24pt x 578.16pt>
 File: figure/Manual_selection_of_bounding_box.png Graphic file (type png)
 
 <use figure/Manual_selection_of_bounding_box.png>
 Package pdftex.def Info: figure/Manual_selection_of_bounding_box.png used on in
-put line 197.
+put line 222.
 (pdftex.def)             Requested size: 284.52756pt x 189.68181pt.
-LaTeX Font Info:    Try loading font information for OML+cmtt on input line 205
+LaTeX Font Info:    Try loading font information for OML+cmtt on input line 230
 .
-LaTeX Font Info:    No file OMLcmtt.fd. on input line 205.
+LaTeX Font Info:    No file OMLcmtt.fd. on input line 230.
 
 
 LaTeX Font Warning: Font shape `OML/cmtt/m/n' undefined
 (Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textgreater' on input line 205.
+(Font)              for symbol `textgreater' on input line 230.
 
-<osmfigs/import-osm.png, id=75, 712.6625pt x 201.75375pt>
+<osmfigs/import-osm.png, id=77, 712.6625pt x 201.75375pt>
 File: osmfigs/import-osm.png Graphic file (type png)
 
 <use osmfigs/import-osm.png>
-Package pdftex.def Info: osmfigs/import-osm.png used on input line 211.
+Package pdftex.def Info: osmfigs/import-osm.png used on input line 236.
 (pdftex.def)             Requested size: 284.52756pt x 80.54921pt.
 
-<osmfigs/open-osmdb.png, id=77, 510.90875pt x 464.73625pt>
+<osmfigs/open-osmdb.png, id=79, 510.90875pt x 464.73625pt>
 File: osmfigs/open-osmdb.png Graphic file (type png)
 
 <use osmfigs/open-osmdb.png>
-Package pdftex.def Info: osmfigs/open-osmdb.png used on input line 223.
+Package pdftex.def Info: osmfigs/open-osmdb.png used on input line 248.
 (pdftex.def)             Requested size: 284.52756pt x 258.81099pt.
- [2 <./figure/Manual_selection_of_bounding_box.png (PNG copy)>]
+ [2] [3 <./figure/Manual_selection_of_bounding_box.png (PNG copy)> <./osmfigs/i
+mport-osm.png> <./osmfigs/open-osmdb.png>]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 254.
- [3 <./osmfigs/import-osm.png> <./osmfigs/open-osmdb.png>]
-<figure/Preliminary_plot_of_Chapletown_with_osmar.png, id=97, 505.89pt x 505.89
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 279.
+
+<figure/Preliminary_plot_of_Chapletown_with_osmar.png, id=99, 505.89pt x 505.89
 pt>
 File: figure/Preliminary_plot_of_Chapletown_with_osmar.png Graphic file (type p
 ng)
  <use figure/Preliminary_plot_of_Chapletown_with_osmar.png>
 Package pdftex.def Info: figure/Preliminary_plot_of_Chapletown_with_osmar.png u
-sed on input line 286.
+sed on input line 311.
 (pdftex.def)             Requested size: 284.52756pt x 284.53154pt.
- [4 <./figure/Preliminary_plot_of_Chapletown_with_osmar.png>] [5]
-<figure/Bike_paths_of_Chapeltown.png, id=109, 505.89pt x 505.89pt>
+ [4] [5 <./figure/Preliminary_plot_of_Chapletown_with_osmar.png>]
+<figure/Bike_paths_of_Chapeltown.png, id=112, 505.89pt x 505.89pt>
 File: figure/Bike_paths_of_Chapeltown.png Graphic file (type png)
 
 <use figure/Bike_paths_of_Chapeltown.png>
 Package pdftex.def Info: figure/Bike_paths_of_Chapeltown.png used on input line
- 407.
+ 432.
 (pdftex.def)             Requested size: 284.52756pt x 284.53154pt.
- [6 <./figure/Bike_paths_of_Chapeltown.png>]
-<figure/Residential_streets_in_Chapeltown.png, id=117, 505.89pt x 505.89pt>
+
+<figure/Residential_streets_in_Chapeltown.png, id=114, 505.89pt x 505.89pt>
 File: figure/Residential_streets_in_Chapeltown.png Graphic file (type png)
 
 <use figure/Residential_streets_in_Chapeltown.png>
 Package pdftex.def Info: figure/Residential_streets_in_Chapeltown.png used on i
-nput line 444.
+nput line 469.
 (pdftex.def)             Requested size: 284.52756pt x 284.53154pt.
-
-<figure/Line_data_of_Potternewton_park.png, id=121, 505.89pt x 505.89pt>
+ [6] [7 <./figure/Bike_paths_of_Chapeltown.png> <./figure/Residential_streets_i
+n_Chapeltown.png>]
+<figure/Line_data_of_Potternewton_park.png, id=131, 505.89pt x 505.89pt>
 File: figure/Line_data_of_Potternewton_park.png Graphic file (type png)
 
 <use figure/Line_data_of_Potternewton_park.png>
 Package pdftex.def Info: figure/Line_data_of_Potternewton_park.png used on inpu
-t line 482.
+t line 507.
 (pdftex.def)             Requested size: 284.52756pt x 284.53154pt.
- [7 <./figure/Residential_streets_in_Chapeltown.png>]
-Overfull \hbox (175.87909pt too wide) in paragraph at lines 509--509
+ [8 <./figure/Line_data_of_Potternewton_park.png>]
+Overfull \hbox (175.87909pt too wide) in paragraph at lines 534--534
 []\OT1/cmtt/m/n/10 osmosis --read-xml data/map.osm --bounding-box top=53.822093
  left=-1.528815 bottom=53.817486 right=-1.521155 --write-xml potter.osm[] 
  []
 
 
-<figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png, id=129, 50
+<figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png, id=138, 50
 5.89pt x 505.89pt>
 File: figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png Graphi
 c file (type png)
 
 <use figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png>
 Package pdftex.def Info: figure/All_OSM_data_in_and_directly_surround_Potternew
-ton_Park.png used on input line 524.
+ton_Park.png used on input line 549.
 (pdftex.def)             Requested size: 284.52756pt x 284.53154pt.
 
-Underfull \hbox (badness 1990) in paragraph at lines 535--541
+Underfull \hbox (badness 1990) in paragraph at lines 560--566
 []\OT1/cmr/m/n/10 For fur-ther func-tion-al-ity, in-clud-ing clip-ping to poly-
 gons, ex-tract-ing files from enor-mous and com-pressed
  []
 
-[8 <./figure/Line_data_of_Potternewton_park.png>] [9 <./figure/All_OSM_data_in_
-and_directly_surround_Potternewton_Park.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 660.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 660.
+[9 <./figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 668.
+
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 668.
  (./osm.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 660.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 660.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 668.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 668.
 Package rerunfilecheck Info: File `osm.out' has not changed.
-(rerunfilecheck)             Checksum: 8B94003A956734CE4E91B40F133370BF;1589.
+(rerunfilecheck)             Checksum: F2B164AA1E86DBB1CC291DFFC9F3850B;1508.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 660.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 668.
  ) 
 Here is how much of TeX's memory you used:
  8275 strings out of 495059
  113764 string characters out of 3182030
- 213889 words of memory out of 3000000
+ 209889 words of memory out of 3000000
  11332 multiletter control sequences out of 15000+200000
  10347 words of font info for 40 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 29i,6n,32p,296b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,6n,32p,296b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
@@ -743,7 +745,7 @@ t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts
 /public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt12.pfb>
-Output written on osm.pdf (10 pages, 878900 bytes).
+Output written on osm.pdf (10 pages, 878861 bytes).
 PDF statistics:
  202 PDF objects out of 1000 (max. 8388607)
  163 compressed objects within 2 object streams
