@@ -1,16 +1,20 @@
 \documentclass[]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifxetex
-  \usepackage{fontspec,xltxtra,xunicode}
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-\else
-  \ifluatex
-    \usepackage{fontspec}
-    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \else
-    \usepackage[utf8]{inputenc}
+\usepackage{ifxetex}
+\usepackage{fixltx2e} % provides \textsubscript
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\ifnum 0\ifxetex 1\fi=0 % if pdftex
+  \usepackage[utf8]{inputenc}
+\else % if xelatex
+  \usepackage{fontspec}
+  \ifxetex
+    \usepackage{xltxtra,xunicode}
   \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \fi
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -45,36 +49,34 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+              xetex]{hyperref}
 \else
-  \usepackage[unicode=true,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+  \usepackage[unicode=true]{hyperref}
 \fi
-\hypersetup{breaklinks=true, pdfborder={0 0 0}}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\setcounter{secnumdepth}{0}
-
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            urlcolor=blue,
 \usepackage[margin=1.8cm]{geometry}
 \author{
 Lovelace, Robin\\
 \texttt{r.lovelace@leeds.ac.uk}
 }
 \title{Open Street Map: loading, analysing and visualising free maps with R and QGIS}
-\usepackage[margin=1.8cm]{geometry}
-\author{
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
 \maketitle
-Lovelace, Robin\\
-\texttt{r.lovelace@leeds.ac.uk}
-}
-\title{Open Street Map: loading, analysing and visualising free maps 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+\author{}
+\date{}
 
 \begin{document}
-\maketitle
 
 
 
@@ -96,20 +98,20 @@ of `volunteered geographical information'
 use, editable, and licensed under new copyright schemes'', as described
 in an excellent review article on the subject
 (\href{http://discovery.ucl.ac.uk/13849/1/13849.pdf}{Haklay and Weber
-2008}) Putting the public in charge of editing the world's surface may
+2008}). Putting the public in charge of editing the world's surface may
 seem like a risky business, given that cartographers have specialist
-skills developed over centuries (as described in
+skills developed over centuries. This issue is described in
 \href{https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping\_the\_Void\_-\_Mapping\_the\_Void\_b03s6mf0\_default.m4a}{Mapping
-the Void} an excellent BBC Radio 4 Documentary on the subject (Salisbury
-and Jenkins 2014). Yet the emergence of high resolution aerial
-photography covering the entirety of the Earth's surface and the
+the Void}, an excellent BBC Radio 4 Documentary on the subject
+(Salisbury and Jenkins 2014). Yet the emergence of high resolution
+aerial photography covering the entirety of the Earth's surface and the
 explosion in GPS ownership via smartphones has enabled citizens to
 become accurate sensors of the world.
 \href{http://www.mdpi.com/1999-5903/4/1/1/pdf}{Neis et al. (2012)}
 believe this phenomenon is more than merely technological. In OSM, they
 see a ``revolutionary paradigm shift on how map data is being
-collected''. Citizen cartographers have the added advantage that they
-are likely to know their local areas far better than any cartographer.
+collected''. Citizen mappers have the added advantage that they may know
+their local area far better than any professional cartographer.
 
 This tutorial adds a small nugget of information to the growing
 literature on OSM, by demonstrating how the data can be accessed for
@@ -132,6 +134,7 @@ about OSM data, including:
   illustrating its potential use for GIS education and store location
   planning
 \end{itemize}
+
 Yet nothing has focussed on simply loading the data using different
 tools. In this paper we use QGIS and R because these are (arguably) the
 most popular open source programmes used by geographers, the discipline
@@ -143,9 +146,9 @@ is actually quite straightforward), let's put OSM data in context.
 Of course there are teething issues with any large-scale open source
 database, including variable data quality, patchy and incomplete
 coverage and inconsistencies from place to place (Haklay 2010). Yet all
-of these issues are gradually being out. The advantages of Open Street
-Map outweigh these downsides for many applications \emph{already}. These
-include:
+of these issues are gradually being ironed out. The advantages of Open
+Street Map outweigh these downsides for many applications
+\emph{already}. These include:
 
 \begin{itemize}
 \item
@@ -155,6 +158,7 @@ include:
 \item
   Ability to share data with anyone without breaching license
 \end{itemize}
+
 In additions there are a number of ethical benefits of using OSM: it's
 community a map for the greater good
 (\href{http://www.theguardian.com/technology/2014/jan/14/why-the-world-needs-openstreetmap}{Wroclawski
@@ -180,22 +184,24 @@ All of the code and data used to create this tutorial is available on
 \href{http://github.com}{GitHub}. Feel free to download the project as a
 \texttt{.zip} file from the
 \href{https://github.com/Robinlovelace/osm-tutorial}{project's
-repository} entitled osm-tutorial and, if you would like to modify or
-improve it in any way, please fork a version for you own use, crediting
-the original where appropriate.
+repository} entitled osm-tutorial from github.com/Robinlovelace. This
+zip file contains all of the code and data used to generate the
+tutorial, which is entirely reproducible. If you would like to modify or
+improve it in any way, please fork a version for you own use, citing the
+original where appropriate.
 
-In this tutorial we focus simply on the technical challenge of
-extracting the data from servers `in the cloud' and onto your desktop.
-We also cover some basic tasks in handling, subsetting and visualising
-the data, first in the graphical user interface (GUI) of QGIS, and then
-in the command line with R. The next stage talks about editing raw OSM
-data, essential if you would like to take subsets of very large OSM
-datasets, such as \texttt{planet.osm} which takes up more than 30 GB of
-memory. The next stage is to talk about OSM data in PostGIS, a
-geodatabase program ideal for querying very large spatial datasets.
-Finally, there is a brief section on further resources. None of the
-sections require any of the previous ones although the level of
-difficulty generally increases as you progress.
+The focus is mainly on the technical challenge of extracting the data
+from servers `in the cloud' and onto your desktop. We also cover some
+basic tasks in handling, subsetting and visualising the data, first in
+the graphical user interface (GUI) of QGIS, and then in the command line
+with R. The next stage talks about editing raw OSM data, essential if
+you would like to take subsets of very large OSM datasets, such as
+\texttt{planet.osm} which takes up more than 30 GB of memory. The next
+stage is to talk about OSM data in PostGIS, a geodatabase program ideal
+for querying very large spatial datasets. Finally, there is a brief
+section on further resources. None of the sections require any of the
+previous ones although the level of difficulty generally increases as
+you progress.
 
 \section{Getting the data}
 
@@ -286,6 +292,7 @@ bicycle paths in Leeds. First the package must be loaded:
 \KeywordTok{library}\NormalTok{(osmar)  }\CommentTok{# if the package is not already installed, use install.packages('osmar')}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ## Loading required package: XML
 ## Loading required package: RCurl
@@ -299,6 +306,7 @@ bicycle paths in Leeds. First the package must be loaded:
 ## 
 ##     find
 \end{verbatim}
+
 To download data directly, one first sets the source and a bounding box,
 and then use the \texttt{get\_osm} function to download it. Selecting
 Chapeltown as the centrepoint of the map, we can download all the data
@@ -313,6 +321,7 @@ in the square km surrounding it.
 \KeywordTok{points}\NormalTok{(-}\FloatTok{1.53492}\NormalTok{, }\FloatTok{53.81934}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Preliminary_plot_of_Chapletown_with_osmar.png}
@@ -331,22 +340,27 @@ sub-object can be called separately using the \texttt{\$} symbol:
 \KeywordTok{names}\NormalTok{(ctown)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ## [1] "nodes"     "ways"      "relations"
 \end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{class}\NormalTok{(ctown)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ## [1] "osmar" "list"
 \end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(ctown$ways)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ## osmar$ways object
 ## 179 ways, 505 tags, 1270 refs 
@@ -371,6 +385,7 @@ sub-object can be called separately using the \texttt{\$} symbol:
 ## 9          lit                 yes   11
 ## 10      source                 npe   10
 \end{verbatim}
+
 Let's use the dataset we have loaded to investigate the cycle paths in
 the vicinity of my house. First we need to understand the data contained
 in the object. Let's look at the tags and the attributes of the
@@ -381,6 +396,7 @@ in the object. Let's look at the tags and the attributes of the
 \KeywordTok{summary}\NormalTok{(ctown$ways$tags)  }\CommentTok{# summary of the tag data}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ##        id                     k                         v      
 ##  Min.   :5.09e+06   highway    :155   residential        : 71  
@@ -391,11 +407,13 @@ in the object. Let's look at the tags and the attributes of the
 ##  Max.   :2.45e+08   building   : 12   Bing               : 23  
 ##                     (Other)    : 75   (Other)            :264
 \end{verbatim}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{head}\NormalTok{(ctown$ways$attrs, }\DecValTok{8}\NormalTok{)  }\CommentTok{# attributes of first 8 ways - see I'm in there!}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ##         id visible           timestamp version changeset            user
 ## 1  5088536    true 2013-02-22 22:08:24      13  15128484 CompactDstrxion
@@ -416,6 +434,7 @@ in the object. Let's look at the tags and the attributes of the
 ## 7  13550
 ## 8 231314
 \end{verbatim}
+
 From looking at the \href{http://wiki.openstreetmap.org/wiki/Tags}{OSM
 tagging system}, we can deduce that \texttt{id} is the element's id,
 \texttt{k} refers to the OSM key (the variables for which the element
@@ -434,6 +453,7 @@ them.
 \KeywordTok{plot_ways}\NormalTok{(bikePaths, }\DataTypeTok{add =} \NormalTok{T, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Bike_paths_of_Chapeltown.png}
@@ -455,9 +475,11 @@ added to the roads that have on-road cycle lanes in this example dataset
 \KeywordTok{which}\NormalTok{(ctown$ways$tags$k == }\StringTok{"cycleway"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ## integer(0)
 \end{verbatim}
+
 There are, by contrast, a large number of ways classified as
 ``residential''. Let us use the same method to select them and add them
 to the map.
@@ -471,6 +493,7 @@ to the map.
 \KeywordTok{plot_ways}\NormalTok{(res, }\DataTypeTok{add =} \NormalTok{T, }\DataTypeTok{col =} \StringTok{"green"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Residential_streets_in_Chapeltown.png}
@@ -509,6 +532,7 @@ text string ``Potternewton Park''. For this we use \texttt{osmar}:
 \KeywordTok{plot_ways}\NormalTok{(potter)  }\CommentTok{# sanity check}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Line_data_of_Potternewton_park.png}
@@ -526,11 +550,13 @@ text string ``Potternewton Park''. For this we use \texttt{osmar}:
 \NormalTok{b}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{verbatim}
 ##      min    max
 ## x -1.529 -1.521
 ## y 53.817 53.822
 \end{verbatim}
+
 Now that we know the bounding box, we can transfer to using osmosis from
 the command line. If the shell is open in the correct working directory
 (e.g. ``osm-tutorial-master'', if downloaded from GitHub), the following
@@ -539,6 +565,7 @@ code will subset the data and output a new, smaller \texttt{.osm} file.
 \begin{verbatim}
 osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815 bottom=53.817486 right=-1.521155 --write-xml potter.osm
 \end{verbatim}
+
 To check whether or not this has worked, and demonstrate
 \texttt{osmar}'s ability to read in \texttt{.osm} files, let us try to
 load an plot the dataset just exported by osmosis.
@@ -548,9 +575,24 @@ load an plot the dataset just exported by osmosis.
 \NormalTok{src <- }\KeywordTok{osmsource_osmosis}\NormalTok{(}\DataTypeTok{file =} \StringTok{"data/potter.osm"}\NormalTok{)}
 \NormalTok{bp <- }\KeywordTok{center_bbox}\NormalTok{(}\KeywordTok{mean}\NormalTok{(b[}\DecValTok{1}\NormalTok{, ]), }\KeywordTok{mean}\NormalTok{(b[}\DecValTok{2}\NormalTok{, ]), }\DecValTok{1000}\NormalTok{, }\DecValTok{1000}\NormalTok{)}
 \NormalTok{potter <- }\KeywordTok{get_osm}\NormalTok{(bp, src)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: cannot open file '/tmp/Rtmpd8BxOn/file177f1a9cd644': No such file
+## or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error: cannot open the connection
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(potter)}
 \end{Highlighting}
 \end{Shaded}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png}
@@ -586,6 +628,7 @@ database:
   Huge datasets can be stored in a database, as it sits on the hard
   disk, only being transferred to RAM when a specific query is called
 \end{itemize}
+
 Because of the size and complexity of the planet-wide OSM database, it
 must be stored in an spatial database to be used. For this use the
 command line tool

@@ -19,12 +19,12 @@ The aim is simple: "to create a set of map data that’s free
 to use, editable, and licensed under new
 copyright schemes", as described in an excellent review 
 article on the subject 
-([Haklay and Weber 2008](http://discovery.ucl.ac.uk/13849/1/13849.pdf))
+([Haklay and Weber 2008](http://discovery.ucl.ac.uk/13849/1/13849.pdf)).
 Putting the public in charge of 
 editing the world's surface may seem like a risky 
 business, given that cartographers have specialist skills 
-developed over centuries (as described in 
-[Mapping the Void](https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping_the_Void_-_Mapping_the_Void_b03s6mf0_default.m4a) an excellent BBC Radio 4 Documentary
+developed over centuries. This issue is described in 
+[Mapping the Void](https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping_the_Void_-_Mapping_the_Void_b03s6mf0_default.m4a), an excellent BBC Radio 4 Documentary
 on the subject (Salisbury and Jenkins 2014). 
 Yet the emergence 
 of high resolution aerial photography covering the entirety 
@@ -35,8 +35,8 @@ to become accurate sensors of the world.
 believe this phenomenon is more than merely technological.
 In OSM, they see a "revolutionary paradigm shift on how map data is 
 being collected".
-Citizen cartographers have the added advantage that they are likely to know their local 
-areas far better than any cartographer. 
+Citizen mappers have the added advantage that they may know their local 
+area far better than any professional cartographer. 
 
 This tutorial adds a small nugget of information to the growing literature
 on OSM, by demonstrating how the data can be accessed for teaching or research 
@@ -61,7 +61,8 @@ let's put OSM data in context.
 Of course there are teething issues with any large-scale open source 
 database, including variable data quality, 
 patchy and incomplete coverage and inconsistencies from place to place (Haklay 2010). Yet all of these
-issues are gradually being out. The advantages of Open Street Map outweigh these downsides for
+issues are gradually  being ironed out. 
+The advantages of Open Street Map outweigh these downsides for
 many applications *already*. These include:
 
 - Rapid updates of new projects
@@ -87,11 +88,12 @@ army of volunteers had helped to map out the affected zone, aiding relief effort
 
 All of the code and data used to create this tutorial is available 
 on [GitHub](http://github.com). Feel free to download the project as a `.zip` file from the 
-[project's repository](https://github.com/Robinlovelace/osm-tutorial) entitled osm-tutorial and, 
-if you would like to modify or improve it 
-in any way, please fork a version for you own use, crediting the original where appropriate.
+[project's repository](https://github.com/Robinlovelace/osm-tutorial) entitled osm-tutorial from 
+github.com/Robinlovelace. This zip file contains all of the code and data 
+used to generate the tutorial, which is entirely reproducible. If you would like to modify or improve it 
+in any way, please fork a version for you own use, citing the original where appropriate.
 
-In this tutorial we focus simply on the technical challenge of extracting the 
+The focus is mainly on the technical challenge of extracting the 
 data from servers 'in the cloud' and onto your desktop. We also cover some basic 
 tasks in handling, subsetting and visualising the data, first in the 
 graphical user interface (GUI) of QGIS, and then in the command line with R.
@@ -426,7 +428,7 @@ potter <- get_osm(bp, src)
 ```
 
 ```
-## Warning: cannot open file '/tmp/RtmpmV4t17/file75e55d7051e8': No such file
+## Warning: cannot open file '/tmp/Rtmpd8BxOn/file177f1a9cd644': No such file
 ## or directory
 ```
 
