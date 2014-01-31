@@ -423,6 +423,18 @@ To check whether or not this has worked, and demonstrate `osmar`'s ability to re
 src <- osmsource_osmosis(file = "data/potter.osm")
 bp <- center_bbox(mean(b[1, ]), mean(b[2, ]), 1000, 1000)
 potter <- get_osm(bp, src)
+```
+
+```
+## Warning: cannot open file '/tmp/RtmpmV4t17/file75e55d7051e8': No such file
+## or directory
+```
+
+```
+## Error: cannot open the connection
+```
+
+```r
 plot(potter)
 ```
 
