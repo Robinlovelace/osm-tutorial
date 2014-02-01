@@ -6,7 +6,7 @@ harness a huge and rapidly growing open source geodatabase: Open Street Map.
 It is targeted at people new to Open Street Map, but who 
 already have an understanding of basic GIS concepts.
 Previous experience with the programs QGIS and R would be beneficial, 
-but not essential, for completing the excercises. There are 
+but not essential, for completing the exercises. There are 
 also a number of resources available on-line for more advanced functions, 
 as described below.
 
@@ -50,9 +50,9 @@ of handling OSM data in ArcMap
 - a [tutorial](http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1) illustrating 
 its potential use for GIS education and store location planning (Lovelace 2013).
 
-Yet nothing has focussed on simply loading the data using different tools.
+Yet nothing has focused on simply loading the data using different tools.
 In this paper we use QGIS and R because these are (arguably) the most popular 
-open source programmes used by geographers, the discipline with most to gain 
+open source programs used by geographers, the discipline with most to gain 
 from OSM data. Before delving into the method (which is actually quite straightforward), 
 let's put OSM data in context.
 
