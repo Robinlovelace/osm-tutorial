@@ -44,11 +44,11 @@ materials. It's a completely free and open dataset, so we may as well use it!
 There is already some good on-line material about OSM data, including:
 
 - a [paper](http://www.mdpi.com/1999-5903/5/2/282/pdf) comparing the quality and 
-coverage of OSM map data in different parts of the world
+coverage of OSM map data in different parts of the world (Neis et al. 2013)
 - an [overview](http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf)
 of handling OSM data in ArcMap
 - a [tutorial](http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1) illustrating 
-its potential use for GIS education and store location planning
+its potential use for GIS education and store location planning (Lovelace 2013).
 
 Yet nothing has focussed on simply loading the data using different tools.
 In this paper we use QGIS and R because these are (arguably) the most popular 
@@ -176,6 +176,7 @@ library(osmar)  # if the package is not already installed, use install.packages(
 ## Loading required package: XML
 ## Loading required package: RCurl
 ## Loading required package: bitops
+## Loading required package: gtools
 ## Loading required package: geosphere
 ## Loading required package: sp
 ## 
@@ -236,7 +237,7 @@ summary(ctown$ways)
 ## 179 ways, 505 tags, 1270 refs 
 ## 
 ## ..$attrs data.frame: 
-##     id, visible, timestamp, version, changeset, user, uid 
+##     id, changeset, timestamp, version, visible, user, uid 
 ## ..$tags data.frame: 
 ##     id, k, v 
 ## ..$refs data.frame: 
@@ -278,28 +279,19 @@ summary(ctown$ways$tags)  # summary of the tag data
 ```
 
 ```r
-head(ctown$ways$attrs, 8)  # attributes of first 8 ways - see I'm in there!
+ctown$ways$attrs[1:8, 1:6]  # attributes of first 8 ways - see I'm in there!
 ```
 
 ```
-##         id visible           timestamp version changeset            user
-## 1  5088536    true 2013-02-22 22:08:24      13  15128484 CompactDstrxion
-## 2 22818969    true 2012-09-08 23:06:53      20  13039300    LeedsTracker
-## 3  6273628    true 2007-09-21 17:25:37       1    483846          SteveC
-## 4  6273619    true 2012-12-01 17:57:45       2  14114856            sc71
-## 5  6273721    true 2007-09-16 17:23:14       1    444107            noii
-## 6  6273722    true 2007-09-16 17:23:16       1    444107            noii
-## 7  6273726    true 2007-09-16 17:23:20       1    444107            noii
-## 8  6273736    true 2013-11-02 10:56:24       5  18672988   RobinLovelace
-##      uid
-## 1 464727
-## 2   2330
-## 3    682
-## 4 106831
-## 5  13550
-## 6  13550
-## 7  13550
-## 8 231314
+##         id changeset           timestamp version visible            user
+## 1  5088536  15128484 2013-02-22 22:08:24      13    true CompactDstrxion
+## 2 22818969  13039300 2012-09-08 23:06:53      20    true    LeedsTracker
+## 3  6273628    483846 2007-09-21 17:25:37       1    true          SteveC
+## 4  6273619  14114856 2012-12-01 17:57:45       2    true            sc71
+## 5  6273721    444107 2007-09-16 17:23:14       1    true            noii
+## 6  6273722    444107 2007-09-16 17:23:16       1    true            noii
+## 7  6273726    444107 2007-09-16 17:23:20       1    true            noii
+## 8  6273736  18672988 2013-11-02 10:56:24       5    true   RobinLovelace
 ```
 
 
@@ -413,7 +405,8 @@ the command line. If the shell is open in the correct working directory
 code will subset the data and output a new, smaller `.osm` file.
 
 ```
-osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815 bottom=53.817486 right=-1.521155 --write-xml potter.osm
+osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815
+   bottom=53.817486 right=-1.521155 --write-xml potter.osm
 
 ```
 
@@ -425,18 +418,6 @@ To check whether or not this has worked, and demonstrate `osmar`'s ability to re
 src <- osmsource_osmosis(file = "data/potter.osm")
 bp <- center_bbox(mean(b[1, ]), mean(b[2, ]), 1000, 1000)
 potter <- get_osm(bp, src)
-```
-
-```
-## Warning: cannot open file '/tmp/Rtmpd8BxOn/file177f1a9cd644': No such file
-## or directory
-```
-
-```
-## Error: cannot open the connection
-```
-
-```r
 plot(potter)
 ```
 
@@ -524,7 +505,11 @@ Greer, J. M. (2009). The Ecotechnic Future: Envisioning a post-peak world. New S
 
 Haklay, M., & Weber, P. (2008). Openstreetmap: User-generated street maps. Pervasive Computing, IEEE, 7(4), 12-18.
 
+Lovelace, R. (2013). Open Source Data and Methods: A tutorial using crowd-sourced data for store location analysis. EloGeo repository.
+
 Neis, P., Zielstra, D., & Zipf, A. (2011). The street network evolution of crowdsourced maps: OpenStreetMap in Germany 2007–2011. Future Internet, 4(1), 1-21.
+
+Neis, P., Zielstra, D., & Zipf, A. (2013). Comparison of Volunteered Geographic Information Data Contributions and Community Development for Selected World Regions. Future Internet, 5(2), 282-300.
 
 Salisbury, C. & Jenkins, J. (2014). Mapping the Void.  Broadcast on BBC Radio 4, 11:00AM Mon, 27 Jan 2014. Available on I-Player until 11:32AM Mon, 3 Feb 2014. Available on my 
 [Dropbox account](https://dl.dropboxusercontent.com/u/15008199/egs2stay/Mapping_the_Void_-_Mapping_the_Void_b03s6mf0_default.m4a) for forseable future.
@@ -533,7 +518,7 @@ Wroclawski, S. (2014). Why the world needs OpenStreetMap. The Guardian. Tuesday 
 
 
 ```r
-source("md2pdf.R")  # convert knitr document to LaTeX
+source("md2pdf.R")  # convert markdown document to LaTeX
 ```
 
 

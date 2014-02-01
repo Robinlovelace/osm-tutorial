@@ -31,7 +31,7 @@ block <- "\\author{
 Lovelace, Robin\\\\
 \\texttt{r.lovelace@leeds.ac.uk}
 }
-\\title{Open Street Map: loading, analysing and visualising free maps with R and QGIS}"
+\\title{Harnessing Open Street Map Data with R and QGIS}"
 text_block <- unlist(strsplit(block, split='\n'))
 # concatenate the old file with the new text
 mytext <- c(text[1:idx],text_block,text[(idx+1):length(text)])

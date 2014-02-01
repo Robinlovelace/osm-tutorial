@@ -1,20 +1,16 @@
 \documentclass[]{article}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
-\usepackage{ifxetex}
-\usepackage{fixltx2e} % provides \textsubscript
-% use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\ifnum 0\ifxetex 1\fi=0 % if pdftex
-  \usepackage[utf8]{inputenc}
-\else % if xelatex
-  \usepackage{fontspec}
-  \ifxetex
-    \usepackage{xltxtra,xunicode}
-  \fi
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
 \fi
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -49,34 +45,29 @@
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
+              xetex,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \else
-  \usepackage[unicode=true]{hyperref}
+  \usepackage[unicode=true,
+              colorlinks=true,
+              linkcolor=blue]{hyperref}
 \fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={},
-            pdftitle={},
-            colorlinks=true,
-            urlcolor=blue,
-\usepackage[margin=1.8cm]{geometry}
-\author{
-Lovelace, Robin\\
-\texttt{r.lovelace@leeds.ac.uk}
-}
-\title{Open Street Map: loading, analysing and visualising free maps with R and QGIS}
-            linkcolor=magenta,
-            pdfborder={0 0 0}}
-\maketitle
+\hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \setcounter{secnumdepth}{0}
 
-\author{}
-\date{}
+\usepackage[margin=1.8cm]{geometry}
+\author{
+Lovelace, Robin\\
+\texttt{r.lovelace@leeds.ac.uk}
+}
+\title{Harnessing Open Street Map Data with R and QGIS}
 
 \begin{document}
+\maketitle
 
 
 
@@ -123,7 +114,7 @@ about OSM data, including:
 \item
   a \href{http://www.mdpi.com/1999-5903/5/2/282/pdf}{paper} comparing
   the quality and coverage of OSM map data in different parts of the
-  world
+  world (Neis et al. 2013)
 \item
   an
   \href{http://www.library.carleton.ca/sites/default/files/help/gis/WorkingWithOpenStreetMap.pdf}{overview}
@@ -132,9 +123,8 @@ about OSM data, including:
   a
   \href{http://elogeo.nottingham.ac.uk/xmlui/bitstream/handle/url/289/osm-tutorial-final-2.pdf?sequence=1}{tutorial}
   illustrating its potential use for GIS education and store location
-  planning
+  planning (Lovelace 2013).
 \end{itemize}
-
 Yet nothing has focussed on simply loading the data using different
 tools. In this paper we use QGIS and R because these are (arguably) the
 most popular open source programmes used by geographers, the discipline
@@ -158,7 +148,6 @@ Street Map outweigh these downsides for many applications
 \item
   Ability to share data with anyone without breaching license
 \end{itemize}
-
 In additions there are a number of ethical benefits of using OSM: it's
 community a map for the greater good
 (\href{http://www.theguardian.com/technology/2014/jan/14/why-the-world-needs-openstreetmap}{Wroclawski
@@ -292,11 +281,11 @@ bicycle paths in Leeds. First the package must be loaded:
 \KeywordTok{library}\NormalTok{(osmar)  }\CommentTok{# if the package is not already installed, use install.packages('osmar')}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ## Loading required package: XML
 ## Loading required package: RCurl
 ## Loading required package: bitops
+## Loading required package: gtools
 ## Loading required package: geosphere
 ## Loading required package: sp
 ## 
@@ -306,7 +295,6 @@ bicycle paths in Leeds. First the package must be loaded:
 ## 
 ##     find
 \end{verbatim}
-
 To download data directly, one first sets the source and a bounding box,
 and then use the \texttt{get\_osm} function to download it. Selecting
 Chapeltown as the centrepoint of the map, we can download all the data
@@ -321,7 +309,6 @@ in the square km surrounding it.
 \KeywordTok{points}\NormalTok{(-}\FloatTok{1.53492}\NormalTok{, }\FloatTok{53.81934}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Preliminary_plot_of_Chapletown_with_osmar.png}
@@ -340,33 +327,28 @@ sub-object can be called separately using the \texttt{\$} symbol:
 \KeywordTok{names}\NormalTok{(ctown)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ## [1] "nodes"     "ways"      "relations"
 \end{verbatim}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{class}\NormalTok{(ctown)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ## [1] "osmar" "list"
 \end{verbatim}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(ctown$ways)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ## osmar$ways object
 ## 179 ways, 505 tags, 1270 refs 
 ## 
 ## ..$attrs data.frame: 
-##     id, visible, timestamp, version, changeset, user, uid 
+##     id, changeset, timestamp, version, visible, user, uid 
 ## ..$tags data.frame: 
 ##     id, k, v 
 ## ..$refs data.frame: 
@@ -385,7 +367,6 @@ sub-object can be called separately using the \texttt{\$} symbol:
 ## 9          lit                 yes   11
 ## 10      source                 npe   10
 \end{verbatim}
-
 Let's use the dataset we have loaded to investigate the cycle paths in
 the vicinity of my house. First we need to understand the data contained
 in the object. Let's look at the tags and the attributes of the
@@ -396,7 +377,6 @@ in the object. Let's look at the tags and the attributes of the
 \KeywordTok{summary}\NormalTok{(ctown$ways$tags)  }\CommentTok{# summary of the tag data}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ##        id                     k                         v      
 ##  Min.   :5.09e+06   highway    :155   residential        : 71  
@@ -407,34 +387,22 @@ in the object. Let's look at the tags and the attributes of the
 ##  Max.   :2.45e+08   building   : 12   Bing               : 23  
 ##                     (Other)    : 75   (Other)            :264
 \end{verbatim}
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{head}\NormalTok{(ctown$ways$attrs, }\DecValTok{8}\NormalTok{)  }\CommentTok{# attributes of first 8 ways - see I'm in there!}
+\NormalTok{ctown$ways$attrs[}\DecValTok{1}\NormalTok{:}\DecValTok{8}\NormalTok{, }\DecValTok{1}\NormalTok{:}\DecValTok{6}\NormalTok{]  }\CommentTok{# attributes of first 8 ways - see I'm in there!}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
-##         id visible           timestamp version changeset            user
-## 1  5088536    true 2013-02-22 22:08:24      13  15128484 CompactDstrxion
-## 2 22818969    true 2012-09-08 23:06:53      20  13039300    LeedsTracker
-## 3  6273628    true 2007-09-21 17:25:37       1    483846          SteveC
-## 4  6273619    true 2012-12-01 17:57:45       2  14114856            sc71
-## 5  6273721    true 2007-09-16 17:23:14       1    444107            noii
-## 6  6273722    true 2007-09-16 17:23:16       1    444107            noii
-## 7  6273726    true 2007-09-16 17:23:20       1    444107            noii
-## 8  6273736    true 2013-11-02 10:56:24       5  18672988   RobinLovelace
-##      uid
-## 1 464727
-## 2   2330
-## 3    682
-## 4 106831
-## 5  13550
-## 6  13550
-## 7  13550
-## 8 231314
+##         id changeset           timestamp version visible            user
+## 1  5088536  15128484 2013-02-22 22:08:24      13    true CompactDstrxion
+## 2 22818969  13039300 2012-09-08 23:06:53      20    true    LeedsTracker
+## 3  6273628    483846 2007-09-21 17:25:37       1    true          SteveC
+## 4  6273619  14114856 2012-12-01 17:57:45       2    true            sc71
+## 5  6273721    444107 2007-09-16 17:23:14       1    true            noii
+## 6  6273722    444107 2007-09-16 17:23:16       1    true            noii
+## 7  6273726    444107 2007-09-16 17:23:20       1    true            noii
+## 8  6273736  18672988 2013-11-02 10:56:24       5    true   RobinLovelace
 \end{verbatim}
-
 From looking at the \href{http://wiki.openstreetmap.org/wiki/Tags}{OSM
 tagging system}, we can deduce that \texttt{id} is the element's id,
 \texttt{k} refers to the OSM key (the variables for which the element
@@ -453,7 +421,6 @@ them.
 \KeywordTok{plot_ways}\NormalTok{(bikePaths, }\DataTypeTok{add =} \NormalTok{T, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Bike_paths_of_Chapeltown.png}
@@ -475,11 +442,9 @@ added to the roads that have on-road cycle lanes in this example dataset
 \KeywordTok{which}\NormalTok{(ctown$ways$tags$k == }\StringTok{"cycleway"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ## integer(0)
 \end{verbatim}
-
 There are, by contrast, a large number of ways classified as
 ``residential''. Let us use the same method to select them and add them
 to the map.
@@ -493,7 +458,6 @@ to the map.
 \KeywordTok{plot_ways}\NormalTok{(res, }\DataTypeTok{add =} \NormalTok{T, }\DataTypeTok{col =} \StringTok{"green"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Residential_streets_in_Chapeltown.png}
@@ -532,7 +496,6 @@ text string ``Potternewton Park''. For this we use \texttt{osmar}:
 \KeywordTok{plot_ways}\NormalTok{(potter)  }\CommentTok{# sanity check}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/Line_data_of_Potternewton_park.png}
@@ -550,22 +513,20 @@ text string ``Potternewton Park''. For this we use \texttt{osmar}:
 \NormalTok{b}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{verbatim}
 ##      min    max
 ## x -1.529 -1.521
 ## y 53.817 53.822
 \end{verbatim}
-
 Now that we know the bounding box, we can transfer to using osmosis from
 the command line. If the shell is open in the correct working directory
 (e.g. ``osm-tutorial-master'', if downloaded from GitHub), the following
 code will subset the data and output a new, smaller \texttt{.osm} file.
 
 \begin{verbatim}
-osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815 bottom=53.817486 right=-1.521155 --write-xml potter.osm
+osmosis --read-xml data/map.osm --bounding-box top=53.822093 left=-1.528815
+   bottom=53.817486 right=-1.521155 --write-xml potter.osm
 \end{verbatim}
-
 To check whether or not this has worked, and demonstrate
 \texttt{osmar}'s ability to read in \texttt{.osm} files, let us try to
 load an plot the dataset just exported by osmosis.
@@ -575,24 +536,9 @@ load an plot the dataset just exported by osmosis.
 \NormalTok{src <- }\KeywordTok{osmsource_osmosis}\NormalTok{(}\DataTypeTok{file =} \StringTok{"data/potter.osm"}\NormalTok{)}
 \NormalTok{bp <- }\KeywordTok{center_bbox}\NormalTok{(}\KeywordTok{mean}\NormalTok{(b[}\DecValTok{1}\NormalTok{, ]), }\KeywordTok{mean}\NormalTok{(b[}\DecValTok{2}\NormalTok{, ]), }\DecValTok{1000}\NormalTok{, }\DecValTok{1000}\NormalTok{)}
 \NormalTok{potter <- }\KeywordTok{get_osm}\NormalTok{(bp, src)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: cannot open file '/tmp/Rtmpd8BxOn/file177f1a9cd644': No such file
-## or directory
-\end{verbatim}
-
-\begin{verbatim}
-## Error: cannot open the connection
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(potter)}
 \end{Highlighting}
 \end{Shaded}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/All_OSM_data_in_and_directly_surround_Potternewton_Park.png}
@@ -628,7 +574,6 @@ database:
   Huge datasets can be stored in a database, as it sits on the hard
   disk, only being transferred to RAM when a specific query is called
 \end{itemize}
-
 Because of the size and complexity of the planet-wide OSM database, it
 must be stored in an spatial database to be used. For this use the
 command line tool
@@ -696,9 +641,16 @@ world. New Society Publishers.
 Haklay, M., \& Weber, P. (2008). Openstreetmap: User-generated street
 maps. Pervasive Computing, IEEE, 7(4), 12-18.
 
+Lovelace, R. (2013). Open Source Data and Methods: A tutorial using
+crowd-sourced data for store location analysis. EloGeo repository.
+
 Neis, P., Zielstra, D., \& Zipf, A. (2011). The street network evolution
 of crowdsourced maps: OpenStreetMap in Germany 2007--2011. Future
 Internet, 4(1), 1-21.
+
+Neis, P., Zielstra, D., \& Zipf, A. (2013). Comparison of Volunteered
+Geographic Information Data Contributions and Community Development for
+Selected World Regions. Future Internet, 5(2), 282-300.
 
 Salisbury, C. \& Jenkins, J. (2014). Mapping the Void. Broadcast on BBC
 Radio 4, 11:00AM Mon, 27 Jan 2014. Available on I-Player until 11:32AM
@@ -711,7 +663,7 @@ Tuesday 14 January 2014 11.52 GMT.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{source}\NormalTok{(}\StringTok{"md2pdf.R"}\NormalTok{)  }\CommentTok{# convert knitr document to LaTeX}
+\KeywordTok{source}\NormalTok{(}\StringTok{"md2pdf.R"}\NormalTok{)  }\CommentTok{# convert markdown document to LaTeX}
 \end{Highlighting}
 \end{Shaded}
 
