@@ -15,7 +15,7 @@ as described below.
 Open Street Map (OSM) is a crowd-sourced map of the world, 
 the archetype of 'volunteered geographical information'
 ([Goodchild 2007](http://www.ncgia.ucsb.edu/projects/vgi/docs/position/Goodchild_VGI2007.pdf)).
-The aim is simple: "to create a set of map data that’s free
+The aim is simple: "to create a set of map data that's free
 to use, editable, and licensed under new
 copyright schemes", as described in an excellent review 
 article on the subject 
