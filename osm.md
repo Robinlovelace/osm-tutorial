@@ -234,7 +234,7 @@ summary(ctown$ways)
 
 ```
 ## osmar$ways object
-## 179 ways, 505 tags, 1270 refs 
+## 180 ways, 509 tags, 1272 refs 
 ## 
 ## ..$attrs data.frame: 
 ##     id, changeset, timestamp, version, visible, user, uid 
@@ -245,8 +245,8 @@ summary(ctown$ways)
 ##  
 ## Key-Value contingency table:
 ##            Key               Value Freq
-## 1      highway         residential   71
-## 2  source:name OS_OpenData_Locator   49
+## 1      highway         residential   72
+## 2  source:name OS_OpenData_Locator   50
 ## 3      highway             service   41
 ## 4   created_by                JOSM   25
 ## 5       source                Bing   23
@@ -269,13 +269,13 @@ summary(ctown$ways$tags)  # summary of the tag data
 
 ```
 ##        id                     k                         v      
-##  Min.   :5.09e+06   highway    :155   residential        : 71  
-##  1st Qu.:7.73e+06   name       :128   OS_OpenData_Locator: 49  
-##  Median :8.46e+07   source     : 56   service            : 41  
-##  Mean   :8.71e+07   source:name: 54   yes                : 32  
+##  Min.   :5.09e+06   highway    :156   residential        : 72  
+##  1st Qu.:7.73e+06   name       :129   OS_OpenData_Locator: 50  
+##  Median :8.46e+07   source     : 57   service            : 41  
+##  Mean   :8.95e+07   source:name: 55   yes                : 32  
 ##  3rd Qu.:1.50e+08   created_by : 25   JOSM               : 25  
-##  Max.   :2.45e+08   building   : 12   Bing               : 23  
-##                     (Other)    : 75   (Other)            :264
+##  Max.   :2.60e+08   building   : 12   Bing               : 23  
+##                     (Other)    : 75   (Other)            :266
 ```
 
 ```r
@@ -313,7 +313,25 @@ plot(ctown)
 plot_ways(bikePaths, add = T, col = "red", lwd = 3)
 ```
 
-![plot of chunk Bike paths of Chapeltown](figure/Bike_paths_of_Chapeltown.png) 
+![plot of chunk Bike paths of Chapeltown](figure/Bike_paths_of_Chapeltown1.png) 
+
+```r
+save(bikePaths, file = "data/bike-paths-lds.RData")
+
+# analysis of time of addition
+class(bikePaths$nodes$attrs$timestamp)
+```
+
+```
+## [1] "POSIXlt" "POSIXt"
+```
+
+```r
+tstamp <- as.POSIXct(bikePaths$nodes$attrs$timestamp, format = )
+hist(bikePaths$nodes$attrs$timestamp, breaks = "year")
+```
+
+![plot of chunk Bike paths of Chapeltown](figure/Bike_paths_of_Chapeltown2.png) 
 
 
 The above code block is used to identify all ways in which cycling 
@@ -448,9 +466,41 @@ in a database:
 transferred to RAM when a specific query is called
 
 Because of the size and complexity of the planet-wide OSM database, it must 
-be stored in an spatial database to be used. For this use the command line tool 
-[osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql). The basics of installation 
-and usage can be found online. 
+be stored in an spatial database to be used. For this one can 
+use the command line tool 
+[osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql). 
+
+Once you have Postgres and PostGIS installed on your computer, 
+and are logged in as the Postgres user the process is straightforward.
+The series of steps required to convert a `.osm` file into a 
+PostGIS enabled databased are as follows.
+
+```{bash}
+createdb osmTutdb # create the database called osmTutdb
+
+psql osmTutdb -c "create extension postgis" # add PostGIS functionality
+
+psql osmTutdb -c "create extension pgrouting" # add pgrouting functionality (not essential)
+
+osm2pgsql -d osmTutdb  map.osm # dump the map.osm data into the new database
+```
+
+The problem with this method of doing things seems to be that osm2pgsql
+ignores the timestamp and user id of the elements, a serious drawback 
+for some applications. According to a 
+[bug report](https://trac.openstreetmap.org/ticket/4894) this is not
+solved by the addition of the `--extra-attributes` tag and this problem 
+was witnessed to persist in osm2pgsql 0.83.0. 
+
+To select all cycleways in an area using osmosis, this was the 
+command used (only found to work on up-to-date versions):
+
+```{bash}
+osmosis --read-xml map.osm --tf accept-ways highway=cycleway --used-node --write-xml osmo-cways.osm
+```
+
+
+
 
 Using a spatial database, it does not take a very large leap to realise that 
 organisations can create a customised version of the OSM database for their own purposes.
